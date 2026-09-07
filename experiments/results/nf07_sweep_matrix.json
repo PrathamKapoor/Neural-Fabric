@@ -1,0 +1,40 @@
+{
+  "matrix": [
+    {
+      "lam_compute": 0,
+      "lam_entropy": 0,
+      "seed": 1,
+      "status": "run_in_torch_training"
+    },
+    {
+      "lam_compute": 0,
+      "lam_entropy": 0.1,
+      "seed": 1,
+      "status": "run_in_torch_training"
+    },
+    {
+      "lam_compute": 0.05,
+      "lam_entropy": 0,
+      "seed": 1,
+      "status": "run_in_torch_training"
+    },
+    {
+      "lam_compute": 0.05,
+      "lam_entropy": 0.1,
+      "seed": 1,
+      "status": "run_in_torch_training"
+    },
+    {
+      "lam_compute": 0.1,
+      "lam_entropy": 0,
+      "seed": 1,
+      "status": "run_in_torch_training"
+    },
+    {
+      "lam_compute": 0.1,
+      "lam_entropy": 0.1,
+      "seed": 1,
+      "status": "run_in_torch_training"
+    }
+  ]
+}

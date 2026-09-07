@@ -1,0 +1,15 @@
+{
+  "in_dist": {
+    "expected": "cnn",
+    "match_rate": 0.45,
+    "mean_compute": 9952.0
+  },
+  "shifted": {
+    "expected": "attention",
+    "match_rate": 0.0,
+    "mean_compute": 1152.0
+  },
+  "degradation": {
+    "match_diff": 0.45
+  }
+}

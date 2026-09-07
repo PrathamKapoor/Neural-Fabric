@@ -45,7 +45,16 @@ class FabricHandler(BaseHTTPRequestHandler):
                 base = MLP(); base_res = base.forward(x)
                 bench = {"fabric_accuracy_est": 0.92, "fabric_compute": res_fabric["compute"], "fabric_path": res_fabric["graph"]["nodes"], "baseline_compute": base.flops(), "savings_pct": max(0, round((1-res_fabric["compute"]/max(base.flops(),1))*100,1))}
                 self.wfile.write(json.dumps(bench).encode())
-            else:
+            elif path == "/sequential":
+                from fabric.primitives.mlp import MLP; from fabric.primitives.cnn import CNN; from fabric.primitives.attention import Attention; from fabric.graph.graph import ComputationGraph
+                x = data.get("input", [0.5]*64)
+                g = ComputationGraph()
+                g.add("cnn",0); g.add("attention",1); g.add("mlp",2)
+                g.connect(0,1); g.connect(1,2)
+                prims = {"cnn":CNN(),"attention":Attention(),"mlp":MLP()}
+                res = g.execute(x, prims)
+                self.send_response(200); self.send_header("Content-Type","application/json"); self.send_header("Access-Control-Allow-Origin","*"); self.end_headers()
+                self.wfile.write(json.dumps({"sequential_path":["cnn","attention","mlp"],"prediction_length":len(res) if isinstance(res,list) else 0,"computational_graph":g.to_json()}).encode())
                 self.send_error(404)
         except Exception as e:
             self.send_response(500); self.send_header("Content-Type","application/json"); self.end_headers()

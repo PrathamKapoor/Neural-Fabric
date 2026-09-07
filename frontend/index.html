@@ -13,7 +13,7 @@ header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:8px}
 h1 em{color:var(--accent);font-style:normal}
-.subtitle{font-size:1.1rem;color:#bbc2cf;max-width:640px;margin-bottom:24px;font-weight:300}
+<button class="demo-btn" onclick="runDemoC()">Demo C (CNN→Attn→MLP seq)</button>
 .badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:6px 14px;border-radius:999px;font-size:.85rem;color:#cfc8bd;margin-bottom:24px}
 main{padding:48px 0 80px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
@@ -122,3 +122,4 @@ function buildMetrics(d){
 </script>
 </body>
 </html>
+function runDemoC(){fetch("http://localhost:8080/sequential",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({input:[0.5]*64})}).then(r=>r.json()).then(d=>{document.getElementById("outResult").textContent="SEQ: "+JSON.stringify(d,null,2);document.getElementById("graphVis").innerHTML="<div class=\"graph-viz\"><div class=\"node cnn\">CNN</div><div class=\"edge\"></div><div class=\"node attn\">ATTN</div><div class=\"edge\"></div><div class=\"node mlp\">MLP</div></div>";});}
