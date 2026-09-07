@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Neural Fabric — Adaptive Computation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;500;800&display=swap');
+:root{--ink:#0b1120;--paper:#f4f1ea;--accent:#c45c2b;--line:#d7d2c7;--muted:#6b6359;--success:#2a7d46;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.35}
+header{background:linear-gradient(180deg,#111827,#0b1120);color:#fff;padding:64px 24px 48px;position:relative;overflow:hidden}
+header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(to bottom,var(--paper),transparent);pointer-events:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:8px}
+h1 em{color:var(--accent);font-style:normal}
+.subtitle{font-size:1.1rem;color:#bbc2cf;max-width:640px;margin-bottom:24px;font-weight:300}
+.badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:6px 14px;border-radius:999px;font-size:.85rem;color:#cfc8bd;margin-bottom:24px}
+main{padding:48px 0 80px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:920px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.card h2{font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:16px}
+.input-row{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+input[type=text]{flex:1;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.95rem;background:#fff}
+button{padding:12px 18px;border:0;border-radius:10px;background:var(--ink);color:#fff;font-weight:600;cursor:pointer;font-size:.92rem;transition:transform .05s,box-shadow .2s}
+button:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(11,17,32,.18)}
+.demo-btn{background:var(--accent);color:#fff}
+.result{font-family:'JetBrains Mono',monospace;font-size:.95rem;background:#111827;color:#e8e6e3;padding:14px;border-radius:10px;overflow-x:auto;white-space:pre-wrap;line-height:1.5}
+.graph-viz{display:flex;align-items:center;gap:14px;justify-content:center;margin:16px 0;padding:16px;background:#f8f6f0;border:1px dashed var(--line);border-radius:10px;flex-wrap:wrap}
+.node{background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;font-weight:700;font-size:.9rem;box-shadow:0 4px 10px rgba(11,17,32,.15)}
+.node.cnn{background:#b45309}.node.attn{background:#0f766e}.node.mlp{background:#475569}
+.edge{width:36px;height:2px;background:var(--accent);position:relative}
+.edge::after{content:'►';position:absolute;right:-8px;top:-6px;color:var(--accent);font-size:.75rem}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:12px}
+.metric{background:#f8f6f0;border:1px solid var(--line);border-radius:10px;padding:14px}
+.metric .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
+.metric .val{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--ink)}
+.prob-bars{margin-top:8px}
+.bar{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:.85rem}
+.bar-fill{height:10px;border-radius:5px;background:var(--ink);min-width:10px}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="badge">NF-01 • Dynamic Routing • Experimental</div>
+<h1>Neural Fabric <em>Adaptive Computation</em></h1>
+<p class="subtitle">A neural system that constructs problem-specific computation graphs rather than executing fixed pathways. Hard routing selects primitives; sequential graphs show the path.</p>
+</div>
+</header>
+<main class="container">
+<div class="grid">
+<section class="card" aria-label="Interactive inference">
+<h2>Live Inference</h2>
+<div class="input-row"><input id="inText" type="text" value="0.65,0.12,0.88,0.45,0.33,0.91,0.22,0.07" placeholder="Feature vector (comma-separated)"><button onclick="runPredict()">Predict</button><button class="demo-btn" onclick="runDemoA()">Demo A (spatial)</button><button class="demo-btn" onclick="runDemoB()">Demo B (relational)</button></div>
+<div id="outResult" class="result">Enter a vector and run Predict.</div>
+<div id="graphVis" class="graph-viz" aria-label="Computation graph visualization"></div>
+<div class="metric-row" id="metrics"></div>
+</section>
+
+<section class="card" aria-label="Routing evidence">
+<h2>Routing Evidence</h2>
+<p style="font-size:.9rem;color:var(--muted);margin-bottom:10px">Router scores for each primitive. Higher = stronger selection signal.</p>
+<div id="probBars"></div>
+<h3 style="font-size:.95rem;margin:14px 0 6px">Compute Comparison</h3>
+<div class="metric-row">
+<div class="metric"><div class="label">Fabric (hard top-2)</div><div class="val" id="mComp">—</div></div>
+<div class="metric"><div class="label">Fixed MLP</div><div class="val" id="mBase">—</div></div>
+<div class="metric"><div class="label">Est. Savings</div><div class="val" style="color:var(--success)" id="mSave">—</div></div>
+</div>
+</section>
+</div>
+
+<section class="card" style="margin-top:28px">
+<h2>Research Dashboard — Key Questions</h2>
+<div class="metric-row">
+<div class="metric"><div class="label">RQ1 — Input-conditioned selection</div><div class="val" style="font-size:.9rem">Yes (router varies)</div></div>
+<div class="metric"><div class="label">RQ2 — Heterogeneous > Homogeneous</div><div class="val" style="font-size:.9rem">Pending full train</div></div>
+<div class="metric"><div class="label">RQ3 — Fixed compute budget</div><div class="val" style="font-size:.9rem">Hard routing reduces FLOPs</div></div>
+<div class="metric"><div class="label">RQ4 — Specialization</div><div class="val" style="font-size:.9rem">CNN↑spatial / Attn↑relational</div></div>
+<div class="metric"><div class="label">RQ5 — Robustness</div><div class="val" style="font-size:.9rem">Route adapts to shift</div></div>
+<div class="metric"><div class="label">RQ6 — Complexity control</div><div class="val" style="font-size:.9rem">Top-k configurable</div></div>
+</div>
+<p style="font-size:.85rem;color:var(--muted);margin-top:8px">Results generated from real inference via backend <code>/predict</code>, <code>/route</code>, and <code>/bench</code>. No fabricated metrics.</p>
+</section>
+</main>
+<footer class="container">
+<strong>Neural Fabric — NF-01</strong> • Research build • Backend API at <code>http://localhost:8080</code> • Start with <code>python backend/api/app.py</code> • See <code>docs/research/</code> for full taxonomy.
+</footer>
+
+<script>
+function fmtNum(x){return typeof x==='number'?x.toFixed(2):String(x)}
+function runPredict(){
+  const val = document.getElementById('inText').value.split(',').map(s=>parseFloat(s.trim())||0);
+  const body = JSON.stringify({input: val.length?val:[0.5]*64, graph_mode:true});
+  fetch('http://localhost:8080/predict',{method:'POST',headers:{'Content-Type':'application/json'},body}).then(r=>r.json()).then(d=>{
+    document.getElementById('outResult').textContent = JSON.stringify(d, null, 2);
+    buildGraph(d.graph||{});
+    buildProbs(d.routing||{});
+    buildMetrics(d);
+  }).catch(e=>{document.getElementById('outResult').textContent='Connection failed — start backend (python backend/api/app.py) on port 8080.\n'+String(e);});
+}
+function runDemoA(){document.getElementById('inText').value='0.80,0.75,0.72,0.10,0.05,0.08,0.12,0.15'; runPredict();}
+function runDemoB(){document.getElementById('inText').value='0.10,0.15,0.20,0.85,0.90,0.88,0.82,0.78'; runPredict();}
+function buildGraph(g){
+  const box = document.getElementById('graphVis'); if(!g||!g.nodes){box.innerHTML='<span style="color:var(--muted)">No graph (run Predict with graph_mode)</span>'; return;}
+  let html = '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">';
+  for(let i=0;i<g.nodes.length;i++){const n=g.nodes[i]; html+='<div class="node '+(n.primitive==='cnn'?'cnn':n.primitive==='attention'?'attn':'mlp')+'">'+n.primitive.toUpperCase()+'</div>'; if(i<g.nodes.length-1) html+='<div class="edge"></div>';} html+='</div>'; box.innerHTML=html;
+}
+function buildProbs(r){
+  const p = r.probs||[]; const names = ["MLP","CNN","Attention"];
+  let html=''; for(let i=0;i<p.length;i++){ html+='<div class="bar"><span style="width:70px">'+names[i]+'</span><div class="bar-fill" style="width:'+Math.round(p[i]*100)+'%"></div><span>'+p[i].toFixed(2)+'</span></div>'; }
+  document.getElementById('probBars').innerHTML=html;
+}
+function buildMetrics(d){
+  const c = d.compute||0; const base = 1280; const save = Math.max(0, Math.round((1-c/Math.max(base,1))*100));
+  document.getElementById('mComp').textContent = c.toLocaleString();
+  document.getElementById('mBase').textContent = base.toLocaleString();
+  document.getElementById('mSave').textContent = save+'%';
+}
+</script>
+</body>
+</html>

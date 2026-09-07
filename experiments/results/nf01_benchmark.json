@@ -1,0 +1,754 @@
+{
+  "runs": [
+    {
+      "id": 0,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.32945892910150815,
+          0.38007568465704294,
+          0.290465386241449
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 1,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.3617042667161432,
+          0.3817933721150886,
+          0.2565023611687682
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 2,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 3,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.31738881942736075,
+          0.41760954885095297,
+          0.2650016317216864
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 4,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 5,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 6,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 7,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 8,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 17152,
+      "routing": {
+        "probs": [
+          0.3804559955467312,
+          0.3240879367664364,
+          0.29545606768683236
+        ],
+        "mode": "hard",
+        "selected": [
+          0
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "latency_ms": 1.52
+    },
+    {
+      "id": 9,
+      "label": "spatial",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 17152,
+      "routing": {
+        "probs": [
+          0.4576908635047633,
+          0.3349669996946582,
+          0.20734213680057847
+        ],
+        "mode": "hard",
+        "selected": [
+          0
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.5
+    },
+    {
+      "id": 10,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 17152,
+      "routing": {
+        "probs": [
+          0.41734629546581925,
+          0.337034802701188,
+          0.24561890183299262
+        ],
+        "mode": "hard",
+        "selected": [
+          0
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.5
+    },
+    {
+      "id": 11,
+      "label": "spatial",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.3297896869949181,
+          0.5012149902603265,
+          0.16899532274475546
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 12,
+      "label": "spatial",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.3723874376342743,
+          0.4284954958469774,
+          0.19911706651874833
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 13,
+      "label": "spatial",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 17152,
+      "routing": {
+        "probs": [
+          0.46462098670439406,
+          0.3159071808214404,
+          0.21947183247416557
+        ],
+        "mode": "hard",
+        "selected": [
+          0
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "latency_ms": 1.51
+    },
+    {
+      "id": 14,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 15,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 16,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 17,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 17152,
+      "routing": {
+        "probs": [
+          0.3994405259331857,
+          0.3355740187810052,
+          0.2649854552858091
+        ],
+        "mode": "hard",
+        "selected": [
+          0
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 18,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.3592157290403237,
+          0.373767401112564,
+          0.2670168698471125
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 19,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 17152,
+      "routing": {
+        "probs": [
+          0.4140083895236387,
+          0.3529254961809713,
+          0.23306611429539
+        ],
+        "mode": "hard",
+        "selected": [
+          0
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 20,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 21,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 22,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 23,
+      "label": "spatial",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.37298210476174,
+          0.38942404583681434,
+          0.23759384940144557
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 24,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.37751886708624594,
+          0.3776786736372812,
+          0.24480245927647296
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 1.52
+    },
+    {
+      "id": 25,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 26,
+      "label": "spatial",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.3790660837954401,
+          0.3935932458061669,
+          0.227340670398393
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 27,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.3319622615929559,
+          0.3721101638642361,
+          0.29592757454280805
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 28,
+      "label": "relational",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 1152,
+      "routing": {
+        "probs": [
+          0.38153331876245944,
+          0.39482900666310866,
+          0.22363767457443198
+        ],
+        "mode": "hard",
+        "selected": [
+          1
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    },
+    {
+      "id": 29,
+      "label": "dense",
+      "mode": "hard",
+      "base_flops": 17152,
+      "fabric_flops": 17152,
+      "routing": {
+        "probs": [
+          0.37356250224039306,
+          0.3682580797924626,
+          0.25817941796714433
+        ],
+        "mode": "hard",
+        "selected": [
+          0
+        ]
+      },
+      "graph_nodes": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "latency_ms": 0.0
+    }
+  ]
+}
