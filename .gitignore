@@ -1,0 +1,63 @@
+# Default-deny everything
+*
+
+# Allow directories
+!*/
+
+# Allow standard configs, docs, and project meta
+!.gitignore
+!.gitattributes
+!README.md
+!CHANGELOG.md
+!LICENSE
+!Dockerfile
+!docker-compose.yml
+!package.json
+!bun.lockb
+!pyproject.toml
+!requirements.txt
+!uv.lock
+!tsconfig.json
+!svelte.config.js
+!vite.config.ts
+
+# Allow source directories
+!docs/
+!docs/**
+!fabric/
+!fabric/**
+!backend/
+!backend/**
+!frontend/
+!frontend/**
+!experiments/
+!experiments/**
+!evaluation/
+!evaluation/**
+!tests/
+!tests/**
+!scripts/
+!scripts/**
+
+# Explicitly ignore secrets, cache, environments, and large weights
+.env*
+*.env
+*.pem
+*.key
+*.cert
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.svelte-kit/
+build/
+dist/
+.DS_Store
+Thumbs.db
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+!experiments/checkpoints/.gitkeep
