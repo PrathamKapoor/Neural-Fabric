@@ -1,0 +1,14 @@
+{
+  "topk_k1": {
+    "mean_compute": 18304.0,
+    "samples": 10
+  },
+  "topk_k2": {
+    "mean_compute": 18304.0,
+    "samples": 10
+  },
+  "topk_k3": {
+    "mean_compute": 18304.0,
+    "samples": 10
+  }
+}

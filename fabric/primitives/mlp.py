@@ -11,6 +11,8 @@ class MLP:
         self.b2 = [random.gauss(0,0.05) for _ in range(out_dim)]
         self.name="mlp"
     def forward(self, x, state=None):
+        x = (x + [0.0]*(self.in_dim - len(x)))[:self.in_dim] if len(x)!=self.in_dim else x
+        # x: list of floats length in_dim
         # x: list of floats length in_dim
         h = [max(0, sum(x[i]*self.W1[i][j] for i in range(self.in_dim)) + self.b1[j]) for j in range(self.hidden)]
         y = [sum(h[j]*self.W2[j][k] for j in range(self.hidden)) + self.b2[k] for k in range(self.out_dim)]

@@ -1,0 +1,84 @@
+{
+  "noise_perturbation": [
+    {
+      "seed": 0,
+      "clean_path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "noisy_path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "path_changed": false
+    },
+    {
+      "seed": 1,
+      "clean_path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "noisy_path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "path_changed": false
+    },
+    {
+      "seed": 2,
+      "clean_path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "noisy_path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "path_changed": false
+    },
+    {
+      "seed": 3,
+      "clean_path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "noisy_path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ],
+      "path_changed": false
+    },
+    {
+      "seed": 4,
+      "clean_path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "noisy_path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ],
+      "path_changed": false
+    }
+  ]
+}
