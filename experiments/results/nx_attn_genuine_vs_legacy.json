@@ -1,0 +1,279 @@
+{
+  "experiment": "NX-ATTN-01_genuine_vs_legacy_attention",
+  "scope": "NEW exploratory; NOT ladder; genuine trunk NEVER in NF-01..NF-15; same data/splits/seeds/budget as NF-01 arms",
+  "hypothesis": "genuine QKV softmax attention behaves differently from the legacy truncated Wq projection under identical evaluation",
+  "config": {
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "n_epochs": 30,
+    "n_train": 100,
+    "n_test": 50,
+    "lr": 0.05,
+    "optimizer": "SGD",
+    "dataset": "evaluation.synthetic_dataset"
+  },
+  "cost_model": "v2-corrected",
+  "genuine_cost": {
+    "flops": 5104,
+    "params": 219,
+    "note": "trunk 5056 + 8->3 head 48"
+  },
+  "timestamp": "2026-09-09T23:01:04.150553",
+  "elapsed_s": 24.63,
+  "failures": [],
+  "paired_genuine_minus_legacy": {
+    "per_seed": [
+      -0.17999999999999994,
+      -0.30000000000000004,
+      -0.24,
+      -0.19999999999999996,
+      -0.36,
+      -0.4,
+      -0.31999999999999995,
+      -0.07999999999999996,
+      -0.26,
+      -0.36
+    ],
+    "mean_diff": -0.27,
+    "n_genuine_wins": 0,
+    "n_ties": 0,
+    "n_legacy_wins": 10
+  },
+  "rows": [
+    {
+      "seed": 1,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.66,
+        "test_loss": 0.7612,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.45,
+        "accuracy_per_kflop": 0.1293
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.84,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.86
+      },
+      "cnn": {
+        "test_accuracy": 0.86
+      }
+    },
+    {
+      "seed": 2,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.62,
+        "test_loss": 0.6681,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.45,
+        "accuracy_per_kflop": 0.1215
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.92,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.98
+      },
+      "cnn": {
+        "test_accuracy": 0.98
+      }
+    },
+    {
+      "seed": 3,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.7,
+        "test_loss": 0.7426,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.46,
+        "accuracy_per_kflop": 0.1371
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.94,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.98
+      },
+      "cnn": {
+        "test_accuracy": 0.96
+      }
+    },
+    {
+      "seed": 4,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.66,
+        "test_loss": 0.5949,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.45,
+        "accuracy_per_kflop": 0.1293
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.86,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.96
+      },
+      "cnn": {
+        "test_accuracy": 0.9
+      }
+    },
+    {
+      "seed": 5,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.6,
+        "test_loss": 0.7622,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.47,
+        "accuracy_per_kflop": 0.1176
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.96,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.96
+      },
+      "cnn": {
+        "test_accuracy": 0.96
+      }
+    },
+    {
+      "seed": 6,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.6,
+        "test_loss": 0.7102,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.47,
+        "accuracy_per_kflop": 0.1176
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 1.0,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 1.0
+      },
+      "cnn": {
+        "test_accuracy": 0.94
+      }
+    },
+    {
+      "seed": 7,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.64,
+        "test_loss": 0.6293,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.46,
+        "accuracy_per_kflop": 0.1254
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.96,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.98
+      },
+      "cnn": {
+        "test_accuracy": 1.0
+      }
+    },
+    {
+      "seed": 8,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.76,
+        "test_loss": 0.6521,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.46,
+        "accuracy_per_kflop": 0.1489
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.84,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.88
+      },
+      "cnn": {
+        "test_accuracy": 0.92
+      }
+    },
+    {
+      "seed": 9,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.66,
+        "test_loss": 0.7364,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.47,
+        "accuracy_per_kflop": 0.1293
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.92,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.98
+      },
+      "cnn": {
+        "test_accuracy": 0.9
+      }
+    },
+    {
+      "seed": 10,
+      "genuine_softmax_attention": {
+        "test_accuracy": 0.48,
+        "test_loss": 0.867,
+        "compute_flops": 5104,
+        "parameters": 219,
+        "status": "completed",
+        "runtime_s": 2.46,
+        "accuracy_per_kflop": 0.094
+      },
+      "legacy_truncated_wq_projection": {
+        "test_accuracy": 0.84,
+        "compute_flops": 2096
+      },
+      "mlp": {
+        "test_accuracy": 0.96
+      },
+      "cnn": {
+        "test_accuracy": 0.94
+      }
+    }
+  ],
+  "limitations": [
+    "single hyperparameter setting (no tuning either arm)",
+    "synthetic benchmark only",
+    "n=10 seeds"
+  ]
+}

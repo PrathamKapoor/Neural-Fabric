@@ -1,0 +1,525 @@
+{
+  "experiment": "nf01_fixed_10seed_robustness",
+  "hypothesis": "corrected efficiency ordering (legacy-projection cheapest) is stable across seeds 1-10",
+  "config": {
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "n_epochs": 30,
+    "n_train": 100,
+    "n_test": 50,
+    "lr": 0.05,
+    "dataset": "evaluation.synthetic_dataset",
+    "trainer": "train_single_architecture (identical to NF-01)"
+  },
+  "cost_model": "v2-corrected",
+  "prim_flops": {
+    "mlp": 17152,
+    "cnn": 8256,
+    "attention": 2048
+  },
+  "timestamp": "2026-09-09T22:58:55.556780",
+  "elapsed_s": 100.34,
+  "failures": [],
+  "pareto_frontier_mean": [
+    "attention",
+    "cnn",
+    "mlp"
+  ],
+  "efficiency_winner_mean": "attention",
+  "summary": {
+    "mlp": {
+      "test_accuracy": {
+        "mean": 0.954,
+        "std": 0.0462,
+        "min": 0.86,
+        "max": 1.0,
+        "ci_95": [
+          0.9209,
+          0.9871
+        ],
+        "n": 10
+      },
+      "accuracy_per_kflop": {
+        "mean": 0.0556,
+        "std": 0.0027,
+        "min": 0.0501,
+        "max": 0.0583,
+        "ci_95": [
+          0.0537,
+          0.0575
+        ],
+        "n": 10
+      },
+      "compute_flops_values": [
+        17152
+      ],
+      "parameters": 8707,
+      "mechanism_note": "dense ReLU MLP (in=64, hidden=128, out=3)"
+    },
+    "cnn": {
+      "test_accuracy": {
+        "mean": 0.936,
+        "std": 0.042,
+        "min": 0.86,
+        "max": 1.0,
+        "ci_95": [
+          0.906,
+          0.966
+        ],
+        "n": 10
+      },
+      "accuracy_per_kflop": {
+        "mean": 0.1108,
+        "std": 0.005,
+        "min": 0.1018,
+        "max": 0.1184,
+        "ci_95": [
+          0.1072,
+          0.1143
+        ],
+        "n": 10
+      },
+      "compute_flops_values": [
+        8448
+      ],
+      "parameters": 171,
+      "mechanism_note": "2D conv (k=3) + quadrant pooling + linear head"
+    },
+    "attention": {
+      "test_accuracy": {
+        "mean": 0.908,
+        "std": 0.059,
+        "min": 0.84,
+        "max": 1.0,
+        "ci_95": [
+          0.8658,
+          0.9502
+        ],
+        "n": 10
+      },
+      "accuracy_per_kflop": {
+        "mean": 0.4332,
+        "std": 0.0281,
+        "min": 0.4008,
+        "max": 0.4771,
+        "ci_95": [
+          0.4131,
+          0.4533
+        ],
+        "n": 10
+      },
+      "compute_flops_values": [
+        2096
+      ],
+      "parameters": 3099,
+      "mechanism_note": "HISTORICAL label 'attention'; mechanistically the LEGACY TRUNCATED Wq LINEAR PROJECTION (single Wq matvec, dead Wk/Wv, no QKT/softmax). Do not interpret as genuine attention."
+    }
+  },
+  "rows": [
+    {
+      "seed": 1,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "test_loss": 0.3446,
+          "train_loss_final": 0.0026,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.0501,
+          "runtime_s": 4.6
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "test_loss": 0.3831,
+          "train_loss_final": 0.2126,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1018,
+          "runtime_s": 4.99
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.84,
+          "test_loss": 0.6726,
+          "train_loss_final": 0.01,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4008,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "test_loss": 0.053,
+          "train_loss_final": 0.0026,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.0571,
+          "runtime_s": 4.67
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "test_loss": 0.2207,
+          "train_loss_final": 0.2107,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.116,
+          "runtime_s": 4.56
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "test_loss": 0.2404,
+          "train_loss_final": 0.0064,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4389,
+          "runtime_s": 0.39
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "test_loss": 0.0617,
+          "train_loss_final": 0.0031,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.0571,
+          "runtime_s": 4.64
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "test_loss": 0.1507,
+          "train_loss_final": 0.1516,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1136,
+          "runtime_s": 4.44
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "test_loss": 0.2018,
+          "train_loss_final": 0.034,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4485,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "test_loss": 0.1527,
+          "train_loss_final": 0.004,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.056,
+          "runtime_s": 4.74
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.9,
+          "test_loss": 0.2242,
+          "train_loss_final": 0.2024,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1065,
+          "runtime_s": 4.78
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "test_loss": 0.3735,
+          "train_loss_final": 0.0141,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4103,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "test_loss": 0.0796,
+          "train_loss_final": 0.0031,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.056,
+          "runtime_s": 4.77
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "test_loss": 0.1396,
+          "train_loss_final": 0.1028,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1136,
+          "runtime_s": 5.17
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "test_loss": 0.2179,
+          "train_loss_final": 0.0149,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.458,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 6,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "test_loss": 0.0539,
+          "train_loss_final": 0.0026,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.0583,
+          "runtime_s": 4.74
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "test_loss": 0.1994,
+          "train_loss_final": 0.197,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1113,
+          "runtime_s": 5.09
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "test_loss": 0.0412,
+          "train_loss_final": 0.0065,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4771,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "test_loss": 0.1367,
+          "train_loss_final": 0.0034,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.0571,
+          "runtime_s": 4.77
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "test_loss": 0.129,
+          "train_loss_final": 0.1981,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1184,
+          "runtime_s": 5.39
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "test_loss": 0.2611,
+          "train_loss_final": 0.0191,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.458,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 8,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.88,
+          "test_loss": 0.2654,
+          "train_loss_final": 0.0027,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.0513,
+          "runtime_s": 4.78
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "test_loss": 0.1737,
+          "train_loss_final": 0.1489,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1089,
+          "runtime_s": 5.72
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.84,
+          "test_loss": 0.7774,
+          "train_loss_final": 0.0162,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4008,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 9,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "test_loss": 0.037,
+          "train_loss_final": 0.0034,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.0571,
+          "runtime_s": 4.76
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.9,
+          "test_loss": 0.1863,
+          "train_loss_final": 0.1475,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1065,
+          "runtime_s": 4.59
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "test_loss": 0.2111,
+          "train_loss_final": 0.0123,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4389,
+          "runtime_s": 0.38
+        }
+      }
+    },
+    {
+      "seed": 10,
+      "status": "completed",
+      "architectures": {
+        "mlp": {
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "test_loss": 0.0859,
+          "train_loss_final": 0.0029,
+          "compute_flops": 17152,
+          "primitive_flops": 17152,
+          "parameters": 8707,
+          "accuracy_per_kflop": 0.056,
+          "runtime_s": 4.75
+        },
+        "cnn": {
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "test_loss": 0.1893,
+          "train_loss_final": 0.2099,
+          "compute_flops": 8448,
+          "primitive_flops": 8256,
+          "parameters": 171,
+          "accuracy_per_kflop": 0.1113,
+          "runtime_s": 4.57
+        },
+        "attention": {
+          "status": "completed",
+          "test_accuracy": 0.84,
+          "test_loss": 0.2974,
+          "train_loss_final": 0.0087,
+          "compute_flops": 2096,
+          "primitive_flops": 2048,
+          "parameters": 3099,
+          "accuracy_per_kflop": 0.4008,
+          "runtime_s": 0.38
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "synthetic benchmark only",
+    "n=10 seeds",
+    "mean-frontier; per-seed frontiers may vary"
+  ]
+}

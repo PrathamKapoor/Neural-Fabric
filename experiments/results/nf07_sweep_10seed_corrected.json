@@ -1,0 +1,1703 @@
+{
+  "experiment": "nf07_sweep",
+  "n_seeds": 10,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "hypothesis": "compute/entropy penalties trade accuracy for executed compute",
+  "config": {
+    "lam_ents": [
+      0.0,
+      0.05,
+      0.2
+    ],
+    "lam_comps": [
+      0.0,
+      0.5,
+      2.0
+    ],
+    "n_epochs": 30,
+    "n_train": 100,
+    "n_test": 50,
+    "lr": 0.05,
+    "dataset": "evaluation.synthetic_dataset (spatial/relational/dense)",
+    "split": "seed-shuffled train/test per seed; same protocol as NF-02"
+  },
+  "cost_model": "v2-corrected",
+  "prim_flops": {
+    "mlp": 17152,
+    "cnn": 8256,
+    "attention": 2048
+  },
+  "corrected_run": true,
+  "timestamp": "2026-09-09T22:56:01.836837",
+  "elapsed_s": 11.14,
+  "failures": [],
+  "cells": [
+    {
+      "lam_ent": 0.0,
+      "lam_comp": 0.0,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.942,
+      "mean_entropy": 0.2842,
+      "mean_top1_flops": 8805.0,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.3099,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0348,
+          "train_objective_final": 0.0348,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2463,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0324,
+          "train_objective_final": 0.0324,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2762,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 18,
+            "attention": 17
+          },
+          "train_nll_final": 0.0409,
+          "train_objective_final": 0.0409,
+          "top1_executed_flops": 9198
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3423,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0524,
+          "train_objective_final": 0.0524,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.3355,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 18,
+            "attention": 18
+          },
+          "train_nll_final": 0.0423,
+          "train_objective_final": 0.0423,
+          "top1_executed_flops": 8896
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.2429,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0331,
+          "train_objective_final": 0.0331,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2524,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0446,
+          "train_objective_final": 0.0446,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.29,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0368,
+          "train_objective_final": 0.0368,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "mean_entropy": 0.244,
+          "max_primitive_ratio": 0.34,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 16,
+            "cnn": 17,
+            "attention": 17
+          },
+          "train_nll_final": 0.0414,
+          "train_objective_final": 0.0414,
+          "top1_executed_flops": 9376
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3028,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 19,
+            "attention": 19
+          },
+          "train_nll_final": 0.0358,
+          "train_objective_final": 0.0358,
+          "top1_executed_flops": 8416
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.0,
+      "lam_comp": 0.5,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.942,
+      "mean_entropy": 0.2824,
+      "mean_top1_flops": 8769.4,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.3043,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0368,
+          "train_objective_final": 0.201,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2497,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0343,
+          "train_objective_final": 0.1986,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2798,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 18,
+            "attention": 17
+          },
+          "train_nll_final": 0.044,
+          "train_objective_final": 0.2069,
+          "top1_executed_flops": 9198
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3355,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0506,
+          "train_objective_final": 0.218,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "mean_entropy": 0.3385,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 13,
+            "cnn": 19,
+            "attention": 18
+          },
+          "train_nll_final": 0.0459,
+          "train_objective_final": 0.2081,
+          "top1_executed_flops": 8718
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.2429,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0357,
+          "train_objective_final": 0.1993,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2512,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0448,
+          "train_objective_final": 0.2105,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.88,
+          "mean_entropy": 0.2844,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 10,
+            "cnn": 21,
+            "attention": 19
+          },
+          "train_nll_final": 0.0381,
+          "train_objective_final": 0.2028,
+          "top1_executed_flops": 8060
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "mean_entropy": 0.2414,
+          "max_primitive_ratio": 0.34,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 16,
+            "cnn": 17,
+            "attention": 17
+          },
+          "train_nll_final": 0.0433,
+          "train_objective_final": 0.2072,
+          "top1_executed_flops": 9376
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2967,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 19,
+            "attention": 19
+          },
+          "train_nll_final": 0.0362,
+          "train_objective_final": 0.2019,
+          "top1_executed_flops": 8416
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.0,
+      "lam_comp": 2.0,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.894,
+      "mean_entropy": 0.3114,
+      "mean_top1_flops": 8052.9,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.84,
+          "mean_entropy": 0.3206,
+          "max_primitive_ratio": 0.46,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 8,
+            "cnn": 23,
+            "attention": 19
+          },
+          "train_nll_final": 0.073,
+          "train_objective_final": 0.6908,
+          "top1_executed_flops": 7704
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.293,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 17,
+            "attention": 21
+          },
+          "train_nll_final": 0.0715,
+          "train_objective_final": 0.6886,
+          "top1_executed_flops": 8167
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.88,
+          "mean_entropy": 0.3229,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 10,
+            "cnn": 19,
+            "attention": 21
+          },
+          "train_nll_final": 0.0877,
+          "train_objective_final": 0.696,
+          "top1_executed_flops": 7811
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3523,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 18,
+            "attention": 20
+          },
+          "train_nll_final": 0.0733,
+          "train_objective_final": 0.7049,
+          "top1_executed_flops": 8291
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.88,
+          "mean_entropy": 0.3766,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 10,
+            "cnn": 21,
+            "attention": 19
+          },
+          "train_nll_final": 0.0867,
+          "train_objective_final": 0.6957,
+          "top1_executed_flops": 8060
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "mean_entropy": 0.2881,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 13,
+            "cnn": 18,
+            "attention": 19
+          },
+          "train_nll_final": 0.0733,
+          "train_objective_final": 0.6899,
+          "top1_executed_flops": 8593
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2741,
+          "max_primitive_ratio": 0.48,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 10,
+            "cnn": 16,
+            "attention": 24
+          },
+          "train_nll_final": 0.0775,
+          "train_objective_final": 0.6982,
+          "top1_executed_flops": 7439
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2974,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 9,
+            "cnn": 21,
+            "attention": 20
+          },
+          "train_nll_final": 0.0718,
+          "train_objective_final": 0.6903,
+          "top1_executed_flops": 7758
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "mean_entropy": 0.2782,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 13,
+            "cnn": 18,
+            "attention": 19
+          },
+          "train_nll_final": 0.0801,
+          "train_objective_final": 0.6933,
+          "top1_executed_flops": 8593
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.9,
+          "mean_entropy": 0.3104,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 19,
+            "attention": 20
+          },
+          "train_nll_final": 0.0659,
+          "train_objective_final": 0.6903,
+          "top1_executed_flops": 8113
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.05,
+      "lam_comp": 0.0,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.942,
+      "mean_entropy": 0.2703,
+      "mean_top1_flops": 8805.0,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2956,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0313,
+          "train_objective_final": 0.038,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2323,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0289,
+          "train_objective_final": 0.0354,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2622,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 18,
+            "attention": 17
+          },
+          "train_nll_final": 0.0373,
+          "train_objective_final": 0.0446,
+          "top1_executed_flops": 9198
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3273,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0478,
+          "train_objective_final": 0.0568,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.3212,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 18,
+            "attention": 18
+          },
+          "train_nll_final": 0.0388,
+          "train_objective_final": 0.0462,
+          "top1_executed_flops": 8896
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.2295,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0297,
+          "train_objective_final": 0.0361,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2396,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0404,
+          "train_objective_final": 0.0486,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2766,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0331,
+          "train_objective_final": 0.0403,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "mean_entropy": 0.2296,
+          "max_primitive_ratio": 0.34,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 16,
+            "cnn": 17,
+            "attention": 17
+          },
+          "train_nll_final": 0.0375,
+          "train_objective_final": 0.0452,
+          "top1_executed_flops": 9376
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2891,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 19,
+            "attention": 19
+          },
+          "train_nll_final": 0.0321,
+          "train_objective_final": 0.0391,
+          "top1_executed_flops": 8416
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.05,
+      "lam_comp": 0.5,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.94,
+      "mean_entropy": 0.2691,
+      "mean_top1_flops": 8787.2,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2911,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0331,
+          "train_objective_final": 0.2044,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.236,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0305,
+          "train_objective_final": 0.2017,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2659,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 18,
+            "attention": 17
+          },
+          "train_nll_final": 0.0401,
+          "train_objective_final": 0.2109,
+          "top1_executed_flops": 9198
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3211,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0464,
+          "train_objective_final": 0.2225,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "mean_entropy": 0.3244,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 13,
+            "cnn": 19,
+            "attention": 18
+          },
+          "train_nll_final": 0.0422,
+          "train_objective_final": 0.2122,
+          "top1_executed_flops": 8718
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.2296,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0319,
+          "train_objective_final": 0.2025,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.239,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0407,
+          "train_objective_final": 0.2148,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.272,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0344,
+          "train_objective_final": 0.2064,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "mean_entropy": 0.2275,
+          "max_primitive_ratio": 0.34,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 16,
+            "cnn": 17,
+            "attention": 17
+          },
+          "train_nll_final": 0.0393,
+          "train_objective_final": 0.2114,
+          "top1_executed_flops": 9376
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2839,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 19,
+            "attention": 19
+          },
+          "train_nll_final": 0.0325,
+          "train_objective_final": 0.2053,
+          "top1_executed_flops": 8416
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.05,
+      "lam_comp": 2.0,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.902,
+      "mean_entropy": 0.2952,
+      "mean_top1_flops": 8156.0,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.84,
+          "mean_entropy": 0.3058,
+          "max_primitive_ratio": 0.46,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 8,
+            "cnn": 23,
+            "attention": 19
+          },
+          "train_nll_final": 0.0626,
+          "train_objective_final": 0.6979,
+          "top1_executed_flops": 7704
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2771,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 17,
+            "attention": 21
+          },
+          "train_nll_final": 0.0601,
+          "train_objective_final": 0.6955,
+          "top1_executed_flops": 8167
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.9,
+          "mean_entropy": 0.3061,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 19,
+            "attention": 20
+          },
+          "train_nll_final": 0.0757,
+          "train_objective_final": 0.7033,
+          "top1_executed_flops": 8113
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3349,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 18,
+            "attention": 20
+          },
+          "train_nll_final": 0.0653,
+          "train_objective_final": 0.7121,
+          "top1_executed_flops": 8291
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.88,
+          "mean_entropy": 0.3594,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 10,
+            "cnn": 21,
+            "attention": 19
+          },
+          "train_nll_final": 0.0769,
+          "train_objective_final": 0.7028,
+          "top1_executed_flops": 8060
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "mean_entropy": 0.267,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 13,
+            "cnn": 18,
+            "attention": 19
+          },
+          "train_nll_final": 0.0623,
+          "train_objective_final": 0.6966,
+          "top1_executed_flops": 8593
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.9,
+          "mean_entropy": 0.2614,
+          "max_primitive_ratio": 0.44,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 17,
+            "attention": 22
+          },
+          "train_nll_final": 0.0669,
+          "train_objective_final": 0.7063,
+          "top1_executed_flops": 7865
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.283,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 9,
+            "cnn": 21,
+            "attention": 20
+          },
+          "train_nll_final": 0.0624,
+          "train_objective_final": 0.6975,
+          "top1_executed_flops": 7758
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.2602,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 18,
+            "attention": 18
+          },
+          "train_nll_final": 0.0711,
+          "train_objective_final": 0.7009,
+          "top1_executed_flops": 8896
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.9,
+          "mean_entropy": 0.2969,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 19,
+            "attention": 20
+          },
+          "train_nll_final": 0.0576,
+          "train_objective_final": 0.6973,
+          "top1_executed_flops": 8113
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.2,
+      "lam_comp": 0.0,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.942,
+      "mean_entropy": 0.2385,
+      "mean_top1_flops": 8805.0,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2631,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0239,
+          "train_objective_final": 0.045,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2006,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0215,
+          "train_objective_final": 0.0417,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2302,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 18,
+            "attention": 17
+          },
+          "train_nll_final": 0.0296,
+          "train_objective_final": 0.0533,
+          "top1_executed_flops": 9198
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2929,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.038,
+          "train_objective_final": 0.0675,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.2881,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 18,
+            "attention": 18
+          },
+          "train_nll_final": 0.031,
+          "train_objective_final": 0.0552,
+          "top1_executed_flops": 8896
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.1996,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0224,
+          "train_objective_final": 0.0426,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2103,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0312,
+          "train_objective_final": 0.0579,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2459,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0253,
+          "train_objective_final": 0.0479,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "mean_entropy": 0.1961,
+          "max_primitive_ratio": 0.34,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 16,
+            "cnn": 17,
+            "attention": 17
+          },
+          "train_nll_final": 0.0288,
+          "train_objective_final": 0.0539,
+          "top1_executed_flops": 9376
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2579,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 19,
+            "attention": 19
+          },
+          "train_nll_final": 0.0241,
+          "train_objective_final": 0.0461,
+          "top1_executed_flops": 8416
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.2,
+      "lam_comp": 0.5,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.94,
+      "mean_entropy": 0.2381,
+      "mean_top1_flops": 8787.2,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2606,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0253,
+          "train_objective_final": 0.2118,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2041,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0226,
+          "train_objective_final": 0.2084,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2338,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 18,
+            "attention": 17
+          },
+          "train_nll_final": 0.0318,
+          "train_objective_final": 0.22,
+          "top1_executed_flops": 9198
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.288,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0371,
+          "train_objective_final": 0.2336,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "mean_entropy": 0.291,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 13,
+            "cnn": 19,
+            "attention": 18
+          },
+          "train_nll_final": 0.0339,
+          "train_objective_final": 0.2218,
+          "top1_executed_flops": 8718
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.1998,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.024,
+          "train_objective_final": 0.2094,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2107,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0315,
+          "train_objective_final": 0.2246,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2433,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 20,
+            "attention": 19
+          },
+          "train_nll_final": 0.0266,
+          "train_objective_final": 0.2146,
+          "top1_executed_flops": 8238
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 1.0,
+          "mean_entropy": 0.195,
+          "max_primitive_ratio": 0.34,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 16,
+            "cnn": 17,
+            "attention": 17
+          },
+          "train_nll_final": 0.0305,
+          "train_objective_final": 0.2207,
+          "top1_executed_flops": 9376
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2548,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 19,
+            "attention": 19
+          },
+          "train_nll_final": 0.0245,
+          "train_objective_final": 0.2128,
+          "top1_executed_flops": 8416
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.2,
+      "lam_comp": 2.0,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_completed": 10,
+      "n_failed": 0,
+      "mean_accuracy": 0.922,
+      "mean_entropy": 0.2555,
+      "mean_top1_flops": 8408.4,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2689,
+          "max_primitive_ratio": 0.44,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 9,
+            "cnn": 22,
+            "attention": 19
+          },
+          "train_nll_final": 0.0411,
+          "train_objective_final": 0.712,
+          "top1_executed_flops": 7882
+        },
+        {
+          "seed": 2,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.235,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0376,
+          "train_objective_final": 0.7087,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 3,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2629,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 19,
+            "attention": 19
+          },
+          "train_nll_final": 0.0518,
+          "train_objective_final": 0.7189,
+          "top1_executed_flops": 8416
+        },
+        {
+          "seed": 4,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.2928,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 18,
+            "attention": 20
+          },
+          "train_nll_final": 0.0479,
+          "train_objective_final": 0.7285,
+          "top1_executed_flops": 8291
+        },
+        {
+          "seed": 5,
+          "status": "completed",
+          "test_accuracy": 0.92,
+          "mean_entropy": 0.3171,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 12,
+            "cnn": 20,
+            "attention": 18
+          },
+          "train_nll_final": 0.0571,
+          "train_objective_final": 0.7185,
+          "top1_executed_flops": 8540
+        },
+        {
+          "seed": 6,
+          "status": "completed",
+          "test_accuracy": 0.96,
+          "mean_entropy": 0.219,
+          "max_primitive_ratio": 0.38,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 14,
+            "cnn": 17,
+            "attention": 19
+          },
+          "train_nll_final": 0.0401,
+          "train_objective_final": 0.7095,
+          "top1_executed_flops": 8771
+        },
+        {
+          "seed": 7,
+          "status": "completed",
+          "test_accuracy": 0.94,
+          "mean_entropy": 0.2285,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 13,
+            "cnn": 17,
+            "attention": 20
+          },
+          "train_nll_final": 0.0455,
+          "train_objective_final": 0.7237,
+          "top1_executed_flops": 8469
+        },
+        {
+          "seed": 8,
+          "status": "completed",
+          "test_accuracy": 0.86,
+          "mean_entropy": 0.2501,
+          "max_primitive_ratio": 0.42,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 9,
+            "cnn": 21,
+            "attention": 20
+          },
+          "train_nll_final": 0.0433,
+          "train_objective_final": 0.7123,
+          "top1_executed_flops": 7758
+        },
+        {
+          "seed": 9,
+          "status": "completed",
+          "test_accuracy": 0.98,
+          "mean_entropy": 0.2165,
+          "max_primitive_ratio": 0.36,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 15,
+            "cnn": 17,
+            "attention": 18
+          },
+          "train_nll_final": 0.0515,
+          "train_objective_final": 0.7177,
+          "top1_executed_flops": 9073
+        },
+        {
+          "seed": 10,
+          "status": "completed",
+          "test_accuracy": 0.9,
+          "mean_entropy": 0.2639,
+          "max_primitive_ratio": 0.4,
+          "collapse_detected": false,
+          "test_selection_counts": {
+            "mlp": 11,
+            "cnn": 19,
+            "attention": 20
+          },
+          "train_nll_final": 0.0396,
+          "train_objective_final": 0.7118,
+          "top1_executed_flops": 8113
+        }
+      ]
+    }
+  ]
+}

@@ -51,3 +51,15 @@ were executed with `--corrected` and saved alongside:
 Attention probe (non-ladder): `attention_primitive_characterization.json`
 from `experiments/probe_attention_primitives.py` — numerical/cost evidence
 only, no accuracy claims.
+
+## Robustness pass (10 seeds; historical + n=3 artifacts preserved)
+
+| ID | Artifact | Finding |
+|---|---|---|
+| NF-07 10-seed | `nf07_sweep_10seed_corrected.json` (+ `nf07_10seed_statistics.json` via `scripts/analyze_nf07_10seed.py`) | λ_comp=2.0 cuts compute on 10/10 seeds (mean −752 FLOPs, p≈0.0006); accuracy cost −4.8pp (p≈0.006); weak λ_comp=0.5 null; 0 failures |
+| NF-01 10-seed | `nf01_fixed_10seed_corrected.json` (via `experiments/nf01_10seed_robustness.py`, detached job) | efficiency ordering stable: legacy-projection > CNN > MLP acc/kFLOP on all seeds; mean frontier {attention, cnn, mlp} |
+| NX-ATTN-01 (new, non-ladder) | `nx_attn_genuine_vs_legacy.json` (via `experiments/nx_attn_genuine.py`, detached job; gradients finite-diff verified ~2e-10) | genuine softmax attention LOSES to legacy projection 10/10 seeds (mean −27pp) at identical budget; costs 5,104 vs 2,096 FLOPs |
+
+All three long runs executed detached through `lab/jobs.py`
+(queue→detached→poll→completion); job records live in git-ignored
+`.agent_loop/jobs/`.

@@ -35,3 +35,22 @@
 - NF-13 MI, NF-14/NF-12/NF-09/NF-10 accuracies + p-values: unchanged
   (bit-identical reruns where applicable). Historical v1 artifacts preserved
   alongside `*_corrected.json`; see `docs/EXPERIMENTS.md`.
+
+## Robustness pass (10 seeds; MEASURED unless noted)
+
+- NF-07 λ_comp=2.0 vs unpenalized, paired by seed (n=10): compute −752
+  FLOPs mean (95% CI [−1084, −420], p≈0.0006, 10/10 seeds lower —
+  reproducible); accuracy −4.8pp mean (CI [−7.8, −1.8]pp, p≈0.006, 8/10
+  lower — reproducible but small). Weak penalty (0.5) is null. No collapse
+  anywhere (0/90 cells-seeds).
+- Top-1 execution: 0.942 mean @ ~8,805 FLOPs vs fixed MLP 0.954 @ 17,152
+  (DERIVED: 48.7% less compute, −1.2pp accuracy on means; paired
+  seed-matched top-1 vs MLP comparison not computed — do not overclaim).
+- Fixed 10-seed: legacy truncated-Wq projection is the efficiency winner on
+  every seed (0.43 acc/kFLOP); CNN 0.11; MLP 0.056. MLP most accurate
+  (0.954) at 8× the projection's cost.
+- Genuine softmax attention (new, same budget): worse than legacy on 10/10
+  seeds (mean −27pp), 5,104 FLOPs. Does not change the ladder picture.
+- NF-13 "attention" selections are mechanistically legacy-projection
+  selections; MI/specialization numbers stand, genuine-attention reading
+  is excluded.

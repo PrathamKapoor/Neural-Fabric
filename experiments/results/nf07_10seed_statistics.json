@@ -1,0 +1,386 @@
+{
+  "analysis": "nf07_10seed_statistics",
+  "source_artifact": "experiments/results/nf07_sweep_10seed_corrected.json",
+  "cost_model": "v2-corrected",
+  "prim_flops": {
+    "mlp": 17152,
+    "cnn": 8256,
+    "attention": 2048
+  },
+  "method": "descriptive stats + paired-by-seed contrasts vs unpenalized baseline; paired t justified by shared seeds/splits; t-normality approximate on discrete 0.02-granularity accuracies \u2014 CIs and sign counts weigh equally with p-values",
+  "timestamp": "2026-09-09T22:56:43.530913",
+  "per_condition": {
+    "le=0.0_lc=0.0": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.942,
+        "sd": 0.0503,
+        "median": 0.96,
+        "min": 0.86,
+        "max": 1.0
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8805.0,
+        "sd": 398.4735,
+        "median": 8833.5,
+        "min": 8238,
+        "max": 9376
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.0_lc=0.5": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.942,
+        "sd": 0.0466,
+        "median": 0.95,
+        "min": 0.86,
+        "max": 1.0
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8769.4,
+        "sd": 428.0681,
+        "median": 8771.0,
+        "min": 8060,
+        "max": 9376
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.0_lc=2.0": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.894,
+        "sd": 0.0353,
+        "median": 0.89,
+        "min": 0.84,
+        "max": 0.94
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8052.9,
+        "sd": 380.1863,
+        "median": 8086.5,
+        "min": 7439,
+        "max": 8593
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.05_lc=0.0": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.942,
+        "sd": 0.0503,
+        "median": 0.96,
+        "min": 0.86,
+        "max": 1.0
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8805.0,
+        "sd": 398.4735,
+        "median": 8833.5,
+        "min": 8238,
+        "max": 9376
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.05_lc=0.5": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.94,
+        "sd": 0.0499,
+        "median": 0.95,
+        "min": 0.86,
+        "max": 1.0
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8787.2,
+        "sd": 397.9321,
+        "median": 8771.0,
+        "min": 8238,
+        "max": 9376
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.05_lc=2.0": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.902,
+        "sd": 0.0358,
+        "median": 0.9,
+        "min": 0.84,
+        "max": 0.96
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8156.0,
+        "sd": 367.7587,
+        "median": 8113.0,
+        "min": 7704,
+        "max": 8896
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.2_lc=0.0": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.942,
+        "sd": 0.0503,
+        "median": 0.96,
+        "min": 0.86,
+        "max": 1.0
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8805.0,
+        "sd": 398.4735,
+        "median": 8833.5,
+        "min": 8238,
+        "max": 9376
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.2_lc=0.5": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.94,
+        "sd": 0.0499,
+        "median": 0.95,
+        "min": 0.86,
+        "max": 1.0
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8787.2,
+        "sd": 397.9321,
+        "median": 8771.0,
+        "min": 8238,
+        "max": 9376
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    },
+    "le=0.2_lc=2.0": {
+      "accuracy": {
+        "n": 10,
+        "mean": 0.922,
+        "sd": 0.0405,
+        "median": 0.92,
+        "min": 0.86,
+        "max": 0.98
+      },
+      "top1_flops": {
+        "n": 10,
+        "mean": 8408.4,
+        "sd": 411.8873,
+        "median": 8442.5,
+        "min": 7758,
+        "max": 9073
+      },
+      "any_collapse": false,
+      "n_completed": 10
+    }
+  },
+  "contrasts_vs_unpenalized_baseline": {
+    "le=0.0_lc=0.5_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": 0.0,
+        "ci95": [
+          -0.0067,
+          0.0067
+        ],
+        "p_two_tailed": 1.0,
+        "n_seeds_lower": 1,
+        "n_seeds_equal": 8,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": -35.6,
+        "ci95": [
+          -89.2848,
+          18.0848
+        ],
+        "p_two_tailed": 0.167851,
+        "n_seeds_lower": 2,
+        "n_seeds_total": 10
+      }
+    },
+    "le=0.0_lc=2.0_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": -0.048,
+        "ci95": [
+          -0.0783,
+          -0.0177
+        ],
+        "p_two_tailed": 0.005911,
+        "n_seeds_lower": 8,
+        "n_seeds_equal": 2,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": -752.1,
+        "ci95": [
+          -1084.1555,
+          -420.0445
+        ],
+        "p_two_tailed": 0.000625,
+        "n_seeds_lower": 10,
+        "n_seeds_total": 10
+      }
+    },
+    "le=0.05_lc=0.0_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "p_two_tailed": 1.0,
+        "n_seeds_lower": 0,
+        "n_seeds_equal": 10,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "p_two_tailed": 1.0,
+        "n_seeds_lower": 0,
+        "n_seeds_total": 10
+      }
+    },
+    "le=0.05_lc=0.5_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": -0.002,
+        "ci95": [
+          -0.0065,
+          0.0025
+        ],
+        "p_two_tailed": 0.343436,
+        "n_seeds_lower": 1,
+        "n_seeds_equal": 9,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": -17.8,
+        "ci95": [
+          -58.0636,
+          22.4636
+        ],
+        "p_two_tailed": 0.343436,
+        "n_seeds_lower": 1,
+        "n_seeds_total": 10
+      }
+    },
+    "le=0.05_lc=2.0_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": -0.04,
+        "ci95": [
+          -0.0634,
+          -0.0166
+        ],
+        "p_two_tailed": 0.003772,
+        "n_seeds_lower": 8,
+        "n_seeds_equal": 2,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": -649.0,
+        "ci95": [
+          -892.6319,
+          -405.3681
+        ],
+        "p_two_tailed": 0.000196,
+        "n_seeds_lower": 10,
+        "n_seeds_total": 10
+      }
+    },
+    "le=0.2_lc=0.0_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "p_two_tailed": 1.0,
+        "n_seeds_lower": 0,
+        "n_seeds_equal": 10,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "p_two_tailed": 1.0,
+        "n_seeds_lower": 0,
+        "n_seeds_total": 10
+      }
+    },
+    "le=0.2_lc=0.5_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": -0.002,
+        "ci95": [
+          -0.0065,
+          0.0025
+        ],
+        "p_two_tailed": 0.343436,
+        "n_seeds_lower": 1,
+        "n_seeds_equal": 9,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": -17.8,
+        "ci95": [
+          -58.0636,
+          22.4636
+        ],
+        "p_two_tailed": 0.343436,
+        "n_seeds_lower": 1,
+        "n_seeds_total": 10
+      }
+    },
+    "le=0.2_lc=2.0_vs_baseline": {
+      "accuracy_paired": {
+        "mean_diff": -0.02,
+        "ci95": [
+          -0.0351,
+          -0.0049
+        ],
+        "p_two_tailed": 0.014956,
+        "n_seeds_lower": 6,
+        "n_seeds_equal": 4,
+        "n_seeds_total": 10
+      },
+      "flops_paired": {
+        "mean_diff": -396.6,
+        "ci95": [
+          -545.9831,
+          -247.2169
+        ],
+        "p_two_tailed": 0.000201,
+        "n_seeds_lower": 9,
+        "n_seeds_total": 10
+      }
+    }
+  },
+  "limitations": [
+    "n=10 seeds; modest power, wide CIs",
+    "test accuracy granularity 0.02 (50-sample test sets)",
+    "synthetic benchmark only; no generalization claim",
+    "paired-t normality approximate on bounded discrete differences"
+  ]
+}
