@@ -1,84 +1,528 @@
 {
-  "noise_perturbation": [
+  "experiment": "nf09_robustness",
+  "noise_levels": [
+    0.0,
+    0.02,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "elapsed_s": 0.06,
+  "levels": [
     {
-      "seed": 0,
-      "clean_path": [
-        {
-          "primitive": "cnn",
-          "step": 0
-        }
+      "noise_std": 0.0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
       ],
-      "noisy_path": [
+      "path_change_rate": 0.0,
+      "rows": [
         {
-          "primitive": "cnn",
-          "step": 0
+          "seed": 0,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 1,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 2,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
+        },
+        {
+          "seed": 3,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 4,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
         }
-      ],
-      "path_changed": false
+      ]
     },
     {
-      "seed": 1,
-      "clean_path": [
-        {
-          "primitive": "cnn",
-          "step": 0
-        }
+      "noise_std": 0.02,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
       ],
-      "noisy_path": [
+      "path_change_rate": 0.0,
+      "rows": [
         {
-          "primitive": "cnn",
-          "step": 0
+          "seed": 0,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 1,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 2,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
+        },
+        {
+          "seed": 3,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 4,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
         }
-      ],
-      "path_changed": false
+      ]
     },
     {
-      "seed": 2,
-      "clean_path": [
-        {
-          "primitive": "mlp",
-          "step": 0
-        }
+      "noise_std": 0.05,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
       ],
-      "noisy_path": [
+      "path_change_rate": 0.0,
+      "rows": [
         {
-          "primitive": "mlp",
-          "step": 0
+          "seed": 0,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 1,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 2,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
+        },
+        {
+          "seed": 3,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 4,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
         }
-      ],
-      "path_changed": false
+      ]
     },
     {
-      "seed": 3,
-      "clean_path": [
-        {
-          "primitive": "cnn",
-          "step": 0
-        }
+      "noise_std": 0.1,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
       ],
-      "noisy_path": [
+      "path_change_rate": 0.2,
+      "rows": [
         {
-          "primitive": "cnn",
-          "step": 0
+          "seed": 0,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 1,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 2,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
+        },
+        {
+          "seed": 3,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 4,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": true,
+          "clean_compute": 17152,
+          "noisy_compute": 1152
         }
-      ],
-      "path_changed": false
+      ]
     },
     {
-      "seed": 4,
-      "clean_path": [
-        {
-          "primitive": "mlp",
-          "step": 0
-        }
+      "noise_std": 0.2,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
       ],
-      "noisy_path": [
+      "path_change_rate": 0.4,
+      "rows": [
         {
-          "primitive": "mlp",
-          "step": 0
+          "seed": 0,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": true,
+          "clean_compute": 1152,
+          "noisy_compute": 17152
+        },
+        {
+          "seed": 1,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 2,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 17152,
+          "noisy_compute": 17152
+        },
+        {
+          "seed": 3,
+          "clean_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": false,
+          "clean_compute": 1152,
+          "noisy_compute": 1152
+        },
+        {
+          "seed": 4,
+          "clean_path": [
+            {
+              "primitive": "mlp",
+              "step": 0
+            }
+          ],
+          "noisy_path": [
+            {
+              "primitive": "cnn",
+              "step": 0
+            }
+          ],
+          "path_changed": true,
+          "clean_compute": 17152,
+          "noisy_compute": 1152
         }
-      ],
-      "path_changed": false
+      ]
     }
   ]
 }

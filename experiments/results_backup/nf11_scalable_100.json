@@ -1,0 +1,604 @@
+{
+  "scalable_100": [
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "relational",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "dense",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    },
+    {
+      "label": "spatial",
+      "mlp_flops": 17152,
+      "cnn_flops": 1152,
+      "attn_flops": 12288
+    }
+  ]
+}

@@ -9,6 +9,8 @@ class Attention:
     def forward(self, x, state=None):
         # x: sequence of vectors length d; return aggregated vector
         # Simplified: mean of projected vectors
+        if not isinstance(x, list): x = list(x)
+        x = (x + [0.0]*max(0, self.d - len(x)))[:self.d]
         proj = [sum(x[i]*self.Wq[i][j] for i in range(self.d)) for j in range(self.d)]
         return proj[:8] if len(proj)>8 else proj
     def params(self): return 3*self.d*self.d

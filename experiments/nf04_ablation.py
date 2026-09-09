@@ -10,9 +10,14 @@ for k in [1,2,3]:
     # Here we just use topk mode directly (selects top-2 by default from router)
     compute_vals = []
     for s in dataset(10):
-        r = eng.predict(s["x"], graph_mode=True)
+        r = eng.predict(s["x"], graph_mode=True, k=k)
         compute_vals.append(r["compute"])
-    res[f"topk_k{k}"]= {"mean_compute": sum(compute_vals)/len(compute_vals), "samples": len(compute_vals)}
-with open("experiments/results/nf04_topk_ablation.json","w") as f:
+    mean_val = sum(compute_vals) / len(compute_vals)
+    res[f"topk_k{k}"] = {
+        "mean_compute": mean_val,
+        "flops": mean_val,
+        "samples": len(compute_vals)
+    }
+with open("experiments/results/nf04_topk_ablation.json", "w") as f:
     json.dump(res, f, indent=2)
 print("NF-04 ablation saved", res)

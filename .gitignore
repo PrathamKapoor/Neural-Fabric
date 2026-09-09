@@ -22,6 +22,8 @@
 !vite.config.ts
 
 # Allow source directories
+!agent_loop/
+!agent_loop/**
 !docs/
 !docs/**
 !fabric/
@@ -41,6 +43,7 @@
 
 # Explicitly ignore secrets, cache, environments, and large weights
 .env*
+!.env.example
 *.env
 *.pem
 *.key

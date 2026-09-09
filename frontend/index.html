@@ -114,7 +114,9 @@ function buildProbs(r){
   document.getElementById('probBars').innerHTML=html;
 }
 function buildMetrics(d){
-  const c = d.compute||0; const base = 1280; const save = Math.max(0, Math.round((1-c/Math.max(base,1))*100));
+  // Baseline = fixed-MLP FLOPs (fabric MLP primitive: 17152). Must match
+  // the engine's measured compute; never a display-only constant.
+  const c = d.compute||0; const base = 17152; const save = Math.max(0, Math.round((1-c/Math.max(base,1))*100));
   document.getElementById('mComp').textContent = c.toLocaleString();
   document.getElementById('mBase').textContent = base.toLocaleString();
   document.getElementById('mSave').textContent = save+'%';

@@ -1,40 +1,304 @@
 {
-  "matrix": [
+  "experiment": "nf07_sweep",
+  "n_seeds": 3,
+  "elapsed_s": 3.23,
+  "cells": [
     {
-      "lam_compute": 0,
-      "lam_entropy": 0,
-      "seed": 1,
-      "status": "run_in_torch_training"
+      "lam_ent": 0.0,
+      "lam_comp": 0.0,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.94,
+      "mean_entropy": 0.2775,
+      "mean_top1_flops": 9917.7,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.86,
+          "ent": 0.3099,
+          "flops": 9287
+        },
+        {
+          "seed": 2,
+          "acc": 0.98,
+          "ent": 0.2463,
+          "flops": 10344
+        },
+        {
+          "seed": 3,
+          "acc": 0.98,
+          "ent": 0.2762,
+          "flops": 10122
+        }
+      ]
     },
     {
-      "lam_compute": 0,
-      "lam_entropy": 0.1,
-      "seed": 1,
-      "status": "run_in_torch_training"
+      "lam_ent": 0.0,
+      "lam_comp": 0.5,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.9333,
+      "mean_entropy": 0.2736,
+      "mean_top1_flops": 9597.7,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.86,
+          "ent": 0.2992,
+          "flops": 8647
+        },
+        {
+          "seed": 2,
+          "acc": 0.98,
+          "ent": 0.2463,
+          "flops": 10344
+        },
+        {
+          "seed": 3,
+          "acc": 0.96,
+          "ent": 0.2752,
+          "flops": 9802
+        }
+      ]
     },
     {
-      "lam_compute": 0.05,
-      "lam_entropy": 0,
-      "seed": 1,
-      "status": "run_in_torch_training"
+      "lam_ent": 0.0,
+      "lam_comp": 2.0,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.9,
+      "mean_entropy": 0.2899,
+      "mean_top1_flops": 8916.0,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.84,
+          "ent": 0.2854,
+          "flops": 7882
+        },
+        {
+          "seed": 2,
+          "acc": 0.92,
+          "ent": 0.2788,
+          "flops": 9384
+        },
+        {
+          "seed": 3,
+          "acc": 0.94,
+          "ent": 0.3055,
+          "flops": 9482
+        }
+      ]
     },
     {
-      "lam_compute": 0.05,
-      "lam_entropy": 0.1,
-      "seed": 1,
-      "status": "run_in_torch_training"
+      "lam_ent": 0.05,
+      "lam_comp": 0.0,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.94,
+      "mean_entropy": 0.2634,
+      "mean_top1_flops": 9917.7,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.86,
+          "ent": 0.2956,
+          "flops": 9287
+        },
+        {
+          "seed": 2,
+          "acc": 0.98,
+          "ent": 0.2323,
+          "flops": 10344
+        },
+        {
+          "seed": 3,
+          "acc": 0.98,
+          "ent": 0.2622,
+          "flops": 10122
+        }
+      ]
     },
     {
-      "lam_compute": 0.1,
-      "lam_entropy": 0,
-      "seed": 1,
-      "status": "run_in_torch_training"
+      "lam_ent": 0.05,
+      "lam_comp": 0.5,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.94,
+      "mean_entropy": 0.2603,
+      "mean_top1_flops": 9704.3,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.86,
+          "ent": 0.2865,
+          "flops": 8647
+        },
+        {
+          "seed": 2,
+          "acc": 0.98,
+          "ent": 0.2328,
+          "flops": 10344
+        },
+        {
+          "seed": 3,
+          "acc": 0.98,
+          "ent": 0.2616,
+          "flops": 10122
+        }
+      ]
     },
     {
-      "lam_compute": 0.1,
-      "lam_entropy": 0.1,
-      "seed": 1,
-      "status": "run_in_torch_training"
+      "lam_ent": 0.05,
+      "lam_comp": 2.0,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.9,
+      "mean_entropy": 0.273,
+      "mean_top1_flops": 8990.0,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.84,
+          "ent": 0.2711,
+          "flops": 8104
+        },
+        {
+          "seed": 2,
+          "acc": 0.92,
+          "ent": 0.2613,
+          "flops": 9384
+        },
+        {
+          "seed": 3,
+          "acc": 0.94,
+          "ent": 0.2865,
+          "flops": 9482
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.2,
+      "lam_comp": 0.0,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.94,
+      "mean_entropy": 0.2313,
+      "mean_top1_flops": 9917.7,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.86,
+          "ent": 0.2631,
+          "flops": 9287
+        },
+        {
+          "seed": 2,
+          "acc": 0.98,
+          "ent": 0.2006,
+          "flops": 10344
+        },
+        {
+          "seed": 3,
+          "acc": 0.98,
+          "ent": 0.2302,
+          "flops": 10122
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.2,
+      "lam_comp": 0.5,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.94,
+      "mean_entropy": 0.2299,
+      "mean_top1_flops": 9917.7,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.86,
+          "ent": 0.2575,
+          "flops": 9287
+        },
+        {
+          "seed": 2,
+          "acc": 0.98,
+          "ent": 0.2018,
+          "flops": 10344
+        },
+        {
+          "seed": 3,
+          "acc": 0.98,
+          "ent": 0.2305,
+          "flops": 10122
+        }
+      ]
+    },
+    {
+      "lam_ent": 0.2,
+      "lam_comp": 2.0,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "mean_accuracy": 0.92,
+      "mean_entropy": 0.238,
+      "mean_top1_flops": 9384.3,
+      "any_collapse": false,
+      "per_seed": [
+        {
+          "seed": 1,
+          "acc": 0.84,
+          "ent": 0.2452,
+          "flops": 8327
+        },
+        {
+          "seed": 2,
+          "acc": 0.96,
+          "ent": 0.2215,
+          "flops": 10024
+        },
+        {
+          "seed": 3,
+          "acc": 0.96,
+          "ent": 0.2473,
+          "flops": 9802
+        }
+      ]
     }
   ]
 }

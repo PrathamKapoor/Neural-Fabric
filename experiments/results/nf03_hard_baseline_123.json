@@ -1,0 +1,35 @@
+{
+  "experiment": "nf03_hard_baseline",
+  "seed": 123,
+  "final_train_acc": null,
+  "final_val_acc": null,
+  "final_test_acc": 0.4333,
+  "routing_entropy": 0.5004,
+  "compute_flops": 10060.8,
+  "baseline_compute_flops": 17152,
+  "compute_savings_pct": 41.34,
+  "training_time": 0.0217,
+  "training_curves": {
+    "loss": [],
+    "entropy": [],
+    "train_accuracy": []
+  },
+  "routing_statistics": {
+    "selection_counts": {
+      "attention": 24,
+      "cnn": 6,
+      "mlp": 0
+    },
+    "selection_frequencies": {
+      "mlp": 0.0,
+      "cnn": 0.2,
+      "attention": 0.8
+    },
+    "max_primitive_ratio": 0.8,
+    "min_primitive_ratio": 0.0,
+    "global_routing_entropy": 0.5004,
+    "collapse_detected": false
+  },
+  "samples_evaluated": 30,
+  "note": "Untrained hard routing baseline vs fixed MLP baseline per nf03 specification."
+}

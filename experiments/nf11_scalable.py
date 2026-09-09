@@ -1,13 +1,21 @@
-"""Scalable benchmark — 100 samples, real torch primitives."""
-import torch, json, os, sys, time
-sys.path.insert(0,".")
-from fabric.primitives.torch_primitives import MLP, CNN, Attention
+"""Scalable benchmark — 100 samples, real primitives."""
+import json, os, sys, time
+sys.path.insert(0, ".")
+from fabric.primitives.mlp import MLP
+from fabric.primitives.cnn import CNN
+from fabric.primitives.attention import Attention
 from evaluation.synthetic_dataset import dataset
-res={"scalable_100":[]}
+res = {"scalable_100": []}
 for s in dataset(100)[:100]:
-    x=torch.tensor(s["x"],dtype=torch.float32).unsqueeze(0)
-    m=MLP(); c=CNN(); a=Attention()
-    res["scalable_100"].append({"label":s["label"],"mlp_flops":m(x).norm().item(),"cnn_flops":c(x).norm().item(),"attn_flops":a(x).norm().item()})
-with open("experiments/results/nf11_scalable_100.json","w") as f:
-    json.dump(res,f,indent=2)
+    x = s["x"]
+    m = MLP(); c = CNN(); a = Attention()
+    m.forward(x); c.forward(x); a.forward(x)
+    res["scalable_100"].append({
+        "label": s["label"],
+        "mlp_flops": m.flops(),
+        "cnn_flops": c.flops(),
+        "attn_flops": a.flops()
+    })
+with open("experiments/results/nf11_scalable_100.json", "w") as f:
+    json.dump(res, f, indent=2)
 print("Scalable 100 saved; samples:", len(res["scalable_100"]))

@@ -1,0 +1,364 @@
+{
+  "hard_vs_fixed": [
+    {
+      "label": "dense",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 17152,
+      "base_flops": 17152,
+      "selected": "mlp",
+      "path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "spatial",
+      "fabric_flops": 17152,
+      "base_flops": 17152,
+      "selected": "mlp",
+      "path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 17152,
+      "base_flops": 17152,
+      "selected": "mlp",
+      "path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "spatial",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "spatial",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "spatial",
+      "fabric_flops": 17152,
+      "base_flops": 17152,
+      "selected": "mlp",
+      "path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 17152,
+      "base_flops": 17152,
+      "selected": "mlp",
+      "path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 17152,
+      "base_flops": 17152,
+      "selected": "mlp",
+      "path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "spatial",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "spatial",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "relational",
+      "fabric_flops": 1152,
+      "base_flops": 17152,
+      "selected": "cnn",
+      "path": [
+        {
+          "primitive": "cnn",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "label": "dense",
+      "fabric_flops": 17152,
+      "base_flops": 17152,
+      "selected": "mlp",
+      "path": [
+        {
+          "primitive": "mlp",
+          "step": 0
+        }
+      ]
+    }
+  ]
+}

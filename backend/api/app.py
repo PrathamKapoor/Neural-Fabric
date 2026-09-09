@@ -43,7 +43,7 @@ class FabricHandler(BaseHTTPRequestHandler):
                 # Baseline: all MLP
                 from fabric.primitives.mlp import MLP
                 base = MLP(); base_res = base.forward(x)
-                bench = {"fabric_accuracy_est": 0.92, "fabric_compute": res_fabric["compute"], "fabric_path": res_fabric["graph"]["nodes"], "baseline_compute": base.flops(), "savings_pct": max(0, round((1-res_fabric["compute"]/max(base.flops(),1))*100,1))}
+                bench = {"fabric_accuracy_est": None, "accuracy_status": "unmeasured: no accuracy evaluation exists", "fabric_compute": res_fabric["compute"], "fabric_path": res_fabric["graph"]["nodes"], "baseline_compute": base.flops(), "savings_pct": max(0, round((1-res_fabric["compute"]/max(base.flops(),1))*100,1))}
                 self.wfile.write(json.dumps(bench).encode())
             elif path == "/sequential":
                 from fabric.primitives.mlp import MLP; from fabric.primitives.cnn import CNN; from fabric.primitives.attention import Attention; from fabric.graph.graph import ComputationGraph

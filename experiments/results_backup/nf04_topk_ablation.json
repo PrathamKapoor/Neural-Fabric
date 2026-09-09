@@ -1,0 +1,17 @@
+{
+  "topk_k1": {
+    "mean_compute": 4352.0,
+    "flops": 4352.0,
+    "samples": 10
+  },
+  "topk_k2": {
+    "mean_compute": 18304.0,
+    "flops": 18304.0,
+    "samples": 10
+  },
+  "topk_k3": {
+    "mean_compute": 30592.0,
+    "flops": 30592.0,
+    "samples": 10
+  }
+}

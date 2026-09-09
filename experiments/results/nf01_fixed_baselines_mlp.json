@@ -1,0 +1,138 @@
+{
+  "experiment": "nf01_fixed_baselines",
+  "architecture": "mlp",
+  "seeds": [
+    42,
+    123,
+    456,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "n_seeds": 8,
+  "summary": {
+    "test_accuracy": {
+      "mean": 0.9475,
+      "std": 0.0399,
+      "min": 0.86,
+      "max": 0.98,
+      "ci_95": [
+        0.9141,
+        0.9809
+      ],
+      "n": 8
+    },
+    "train_loss": {
+      "mean": 0.0029,
+      "std": 0.0006,
+      "min": 0.0021,
+      "max": 0.004,
+      "ci_95": [
+        0.0024,
+        0.0034
+      ],
+      "n": 8
+    },
+    "train_accuracy": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ],
+      "n": 8
+    },
+    "compute_flops": {
+      "mean": 17152.0,
+      "std": 0.0,
+      "min": 17152,
+      "max": 17152,
+      "ci_95": [
+        17152.0,
+        17152.0
+      ],
+      "n": 8
+    },
+    "parameters": {
+      "mean": 8707.0,
+      "std": 0.0,
+      "min": 8707,
+      "max": 8707,
+      "ci_95": [
+        8707.0,
+        8707.0
+      ],
+      "n": 8
+    }
+  },
+  "per_seed_results": [
+    {
+      "seed": 42,
+      "test_accuracy": 0.96,
+      "train_loss_final": 0.0032,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    },
+    {
+      "seed": 123,
+      "test_accuracy": 0.92,
+      "train_loss_final": 0.0025,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    },
+    {
+      "seed": 456,
+      "test_accuracy": 0.96,
+      "train_loss_final": 0.0021,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    },
+    {
+      "seed": 1,
+      "test_accuracy": 0.86,
+      "train_loss_final": 0.0026,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    },
+    {
+      "seed": 2,
+      "test_accuracy": 0.98,
+      "train_loss_final": 0.0026,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    },
+    {
+      "seed": 3,
+      "test_accuracy": 0.98,
+      "train_loss_final": 0.0031,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    },
+    {
+      "seed": 4,
+      "test_accuracy": 0.96,
+      "train_loss_final": 0.004,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    },
+    {
+      "seed": 5,
+      "test_accuracy": 0.96,
+      "train_loss_final": 0.0031,
+      "train_accuracy_final": 1.0,
+      "compute_flops": 17152,
+      "parameters": 8707
+    }
+  ]
+}

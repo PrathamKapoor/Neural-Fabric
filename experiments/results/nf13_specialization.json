@@ -1,0 +1,126 @@
+{
+  "experiment": "nf13_specialization",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "max_mi_nats": 1.0986,
+  "mean_mi_nats": 0.8691,
+  "mean_correct_primitive_rate": 0.9266,
+  "elapsed_s": 0.48,
+  "rows": [
+    {
+      "seed": 1,
+      "conditional": {
+        "dense": {
+          "mlp": 0.7667,
+          "cnn": 0.1333,
+          "attention": 0.1
+        },
+        "spatial": {
+          "mlp": 0.0,
+          "cnn": 1.0,
+          "attention": 0.0
+        },
+        "relational": {
+          "mlp": 0.0,
+          "cnn": 0.0,
+          "attention": 1.0
+        }
+      },
+      "mutual_information_nats": 0.8501,
+      "correct_primitive_rate": 0.9222
+    },
+    {
+      "seed": 2,
+      "conditional": {
+        "dense": {
+          "mlp": 0.8333,
+          "cnn": 0.0,
+          "attention": 0.1667
+        },
+        "spatial": {
+          "mlp": 0.0333,
+          "cnn": 0.9667,
+          "attention": 0.0
+        },
+        "relational": {
+          "mlp": 0.0,
+          "cnn": 0.0,
+          "attention": 1.0
+        }
+      },
+      "mutual_information_nats": 0.892,
+      "correct_primitive_rate": 0.9333
+    },
+    {
+      "seed": 3,
+      "conditional": {
+        "dense": {
+          "mlp": 0.8333,
+          "cnn": 0.0,
+          "attention": 0.1667
+        },
+        "spatial": {
+          "mlp": 0.0,
+          "cnn": 1.0,
+          "attention": 0.0
+        },
+        "relational": {
+          "mlp": 0.0,
+          "cnn": 0.0,
+          "attention": 1.0
+        }
+      },
+      "mutual_information_nats": 0.9391,
+      "correct_primitive_rate": 0.9444
+    },
+    {
+      "seed": 4,
+      "conditional": {
+        "dense": {
+          "mlp": 0.9,
+          "cnn": 0.0333,
+          "attention": 0.0667
+        },
+        "spatial": {
+          "mlp": 0.1667,
+          "cnn": 0.8333,
+          "attention": 0.0
+        },
+        "relational": {
+          "mlp": 0.0,
+          "cnn": 0.0,
+          "attention": 1.0
+        }
+      },
+      "mutual_information_nats": 0.8143,
+      "correct_primitive_rate": 0.9111
+    },
+    {
+      "seed": 5,
+      "conditional": {
+        "dense": {
+          "mlp": 0.7667,
+          "cnn": 0.1,
+          "attention": 0.1333
+        },
+        "spatial": {
+          "mlp": 0.0,
+          "cnn": 1.0,
+          "attention": 0.0
+        },
+        "relational": {
+          "mlp": 0.0,
+          "cnn": 0.0,
+          "attention": 1.0
+        }
+      },
+      "mutual_information_nats": 0.8501,
+      "correct_primitive_rate": 0.9222
+    }
+  ]
+}
