@@ -52,7 +52,7 @@ class TestFixedBaselineModels(unittest.TestCase):
         self.assertEqual(len(logits), 3)
         self.assertEqual(len(feats), 32)
         self.assertEqual(len(conv_maps), 8)
-        self.assertEqual(model.flops(), 1344)
+        self.assertEqual(model.flops(), 8256 + 2 * 32 * 3)  # 8448, v2 cost model
         self.assertEqual(model.params(), 171)
 
         filter_before = model.primitive.filters[0][0][0][0]
@@ -68,7 +68,7 @@ class TestFixedBaselineModels(unittest.TestCase):
         self.assertEqual(len(logits), 3)
         self.assertEqual(len(feats), 8)
         self.assertEqual(len(x_d), 32)
-        self.assertEqual(model.flops(), 12336)
+        self.assertEqual(model.flops(), 2048 + 2 * 8 * 3)  # 2096, v2 cost model
         self.assertEqual(model.params(), 3099)
 
         wq_before = model.primitive.Wq[0][0]

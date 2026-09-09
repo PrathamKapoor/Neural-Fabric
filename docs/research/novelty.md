@@ -1,5 +1,32 @@
 # Neural Fabric: Defensible Novelty & Core Technical Contributions
 
+## 0. Reconciliation status — v2-corrected cost-model pass (BINDING)
+
+The body below (§1–§5) is the HISTORICAL proposal text, preserved unchanged
+for provenance. It over-describes the executable system. This section states
+what actually exists; every scientific claim must be read against it.
+
+Claim-status key: IMPLEMENTED = exists in code · EVALUATED = measured in a
+recorded experiment · PROPOSED = historical/future only · ABSENT = claimed
+but not present.
+
+| Historical claim (§2/§5) | Status | Evidence |
+|---|---|---|
+| 3-primitive library: MLP (ReLU), CNN (k=3), legacy "attention" projection | IMPLEMENTED + EVALUATED | fabric/primitives/{mlp,cnn,attention}.py; NF-01/NF-02 |
+| Multi-scale CNN (k=3, 5) | PROPOSED — only k=3 exists | fabric/primitives/cnn.py (single k) |
+| Multi-head self-attention (n=4, pairwise token interactions) | ABSENT as described — single stored n_heads=1, never used; forward is a truncated Wq projection with dead Wk/Wv, no QKᵀ, no softmax | fabric/primitives/attention.py LEGACY header; tests/test_cost_model.py |
+| MLP with SwiGLU / GeLU | ABSENT — implemented activation is ReLU | fabric/primitives/mlp.py |
+| Graph message-passing primitive (dynamic k-NN) / "four primitives" | ABSENT — no GNN module exists; library has 3 primitives | repo tree; §5 "favors GNN" unevaluated |
+| Adversarial-perturbation diagnostics | PARTIAL — Gaussian-noise routing stability only (NF-09); no adversarial suite | experiments/nf09_robustness.py |
+| Vision benchmarks (CIFAR-scale or similar) | ABSENT — all evaluation is controlled synthetic | evaluation/ |
+| Genuine QKV softmax attention | IMPLEMENTED, NOT ladder-EVALUATED — separate primitive `softmax_attention`, never substituted into historical experiments | fabric/primitives/genuine_attention.py |
+| Compute-aware routing tradeoff (NF-07) | EVALUATED under v1, RE-EVALUATED under v2-corrected | nf07_sweep_matrix.json (historical) vs _corrected.json |
+
+Related overstatements corrected alongside: docs/research/related_work.md
+comparative matrix (GNN removed from the implemented set) and
+docs/research/landscape.md §2.4 (aspirational 5-member library marked
+proposed; implemented set is MLP/CNN/legacy-attention).
+
 ## 1. What Neural Fabric IS NOT
 To maintain scientific rigor and intellectual honesty, we explicitly declare what Neural Fabric is NOT:
 1. It is NOT another standard MoE layer substituting MLP experts with identical feedforward stacks.

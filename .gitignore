@@ -11,6 +11,7 @@
 !CHANGELOG.md
 !LICENSE
 !Dockerfile
+!.dockerignore
 !docker-compose.yml
 !package.json
 !bun.lockb

@@ -47,11 +47,17 @@ def main():
         levels.append({"noise_std": noise, "seeds": SEEDS,
                        "path_change_rate": round(rate, 4), "rows": rows})
         print(f"noise={noise} path_change_rate={rate:.2f}")
+    from fabric.primitives.cost_model import COST_MODEL_VERSION, PRIM_FLOPS
+    corrected = "--corrected" in sys.argv
     out = {"experiment": "nf09_robustness", "noise_levels": NOISE_LEVELS,
+           "cost_model": COST_MODEL_VERSION, "prim_flops": dict(PRIM_FLOPS),
+           "corrected_run": corrected,
            "elapsed_s": round(time.time() - t0, 2), "levels": levels}
-    with open("experiments/results/nf09_robustness.json", "w") as f:
+    path = ("experiments/results/nf09_robustness_corrected.json"
+            if corrected else "experiments/results/nf09_robustness.json")
+    with open(path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[DONE] NF-09 saved to experiments/results/nf09_robustness.json")
+    print(f"[DONE] NF-09 saved to {path}")
 
 
 if __name__ == "__main__":

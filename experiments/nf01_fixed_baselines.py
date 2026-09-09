@@ -431,7 +431,8 @@ def train_single_architecture(arch_name, seed, train_data, test_data, label_map,
     selection_counts = {"mlp": 0, "cnn": 0, "attention": 0}
     selection_counts[arch_name] = len(test_data)
 
-    primitive_flops_table = {"mlp": 17152, "cnn": 1152, "attention": 12288}
+    from fabric.primitives.cost_model import PRIM_FLOPS
+    primitive_flops_table = dict(PRIM_FLOPS)
     model_flops = model.flops()
     primitive_flops = primitive_flops_table[arch_name]
 

@@ -1,0 +1,25 @@
+{
+  "topk_k1": {
+    "mean_compute": 10035.2,
+    "flops": 10035.2,
+    "samples": 10
+  },
+  "topk_k2": {
+    "mean_compute": 25408.0,
+    "flops": 25408.0,
+    "samples": 10
+  },
+  "topk_k3": {
+    "mean_compute": 27456.0,
+    "flops": 27456.0,
+    "samples": 10
+  },
+  "cost_model": "v2-corrected",
+  "corrected_run": true,
+  "prim_flops": {
+    "mlp": 17152,
+    "cnn": 8256,
+    "attention": 2048
+  },
+  "timestamp": "2026-09-09T22:30:23.081935"
+}

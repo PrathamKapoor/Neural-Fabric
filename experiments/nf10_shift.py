@@ -30,7 +30,14 @@ for label, data in [("in", test_same), ("shift", test_shift)]:
     res[label == "in" and "in_dist" or "shifted"]["match_rate"] = match/len(data)
     res[label == "in" and "in_dist" or "shifted"]["mean_compute"] = sum(computes)/len(computes)
 
+from fabric.primitives.cost_model import COST_MODEL_VERSION, PRIM_FLOPS
+corrected = "--corrected" in sys.argv
 res["degradation"]["match_diff"] = res["in_dist"]["match_rate"] - res["shifted"]["match_rate"]
-with open("experiments/results/nf10_distribution_shift.json","w") as f:
+res["cost_model"] = COST_MODEL_VERSION
+res["corrected_run"] = corrected
+res["prim_flops"] = dict(PRIM_FLOPS)
+path = ("experiments/results/nf10_distribution_shift_corrected.json"
+        if corrected else "experiments/results/nf10_distribution_shift.json")
+with open(path,"w") as f:
     json.dump(res, f, indent=2)
-print("NF-10 saved:", json.dumps(res, indent=2)[:300])
+print(f"NF-10 saved to {path}:", json.dumps(res, indent=2)[:300])

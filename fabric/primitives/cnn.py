@@ -75,4 +75,9 @@ class CNN:
         return self.in_ch * self.out_ch * self.k * self.k
 
     def flops(self):
-        return self.in_ch * self.out_ch * self.k * self.k * 16
+        # Boundary-aware count (see cost_model.py): the forward loop visits
+        # all 64 positions with same-padding edge checks, plus quadrant
+        # average-pooling arithmetic. v1 used in*out*k*k*16 (=1152), which
+        # wrongly assumed 16 positions; corrected value for defaults is 8256.
+        from .cost_model import cnn_flops
+        return cnn_flops(self.in_ch, self.out_ch, self.k)

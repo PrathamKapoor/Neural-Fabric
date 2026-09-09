@@ -26,3 +26,28 @@ persist alongside mean/std/CI.
 Rerun any script directly (e.g. `.venv\Scripts\python.exe
 experiments\nf02_soft_training.py`); artifacts regenerate byte-identically
 modulo timestamps and wall-clock fields.
+
+## Cost-model correction pass (v2-corrected; historical artifacts preserved)
+
+Historical artifacts above are the v1 cost-model record and are NOT
+overwritten. Corrected runs (same code protocol, corrected
+`fabric/primitives/cost_model.py`: mlp=17152, cnn=8256, attention-legacy=2048)
+were executed with `--corrected` and saved alongside:
+
+| ID | Corrected artifact | Result vs historical |
+|---|---|---|
+| NF-07 | `nf07_sweep_matrix_corrected.json` | tradeoff shape survives: λ_comp=2.0 cuts top-1 FLOPs ~11% (8836→7894) for −6pp acc (0.94→0.88); no collapse either run |
+| NF-02 | `nf02_soft_training_corrected.json` (+ `runs/nf02_soft_corrected_seed*.json`) | acc/entropy bit-identical (0.94±0.051); only compute fields change (executed 30976→27840) |
+| NF-12 | `nf12_routing_modes_corrected.json` | acc + paired p-values bit-identical; top-1 FLOPs 10004.8→8835.2; null conclusions unchanged |
+| NF-14 | `nf14_hierarchical_corrected.json` | acc + paired p bit-identical; h_hier_supported=False both; only exec-FLOPs change |
+| NF-04 | `nf04_topk_ablation_corrected.json` | k1<k2<k3 ordering preserved (unseeded 10-sample demo; values not cross-run comparable) |
+| NF-09 | `nf09_robustness_corrected.json` | path-change curve bit-identical; only compute fields change |
+| NF-10 | `nf10_distribution_shift_corrected.json` | match rates identical (0.45→0.0); only mean_compute changes |
+| NF-11 | `nf11_scalable_100_corrected.json` | per-sample FLOPs now from corrected primitives |
+| NF-01 | `nf01_fixed_baselines_corrected_compute.json` | REPORTING-ONLY derivation (training is cost-independent): pareto becomes {CNN, Attention, MLP}; efficiency winner flips CNN→Attention (0.44 acc/kFLOP); best-fixed identity flips on tied seeds 456, 5 (accuracies unchanged) |
+| NF-13 | no corrected file (verified UNCHANGED) | rerun bit-identical modulo wall-clock; MI cost-free; interpretation note: "attention" selections = legacy projection |
+| NF-15 | NOT AFFECTED (accuracy-only, no FLOPs fields) | — |
+
+Attention probe (non-ladder): `attention_primitive_characterization.json`
+from `experiments/probe_attention_primitives.py` — numerical/cost evidence
+only, no accuracy claims.

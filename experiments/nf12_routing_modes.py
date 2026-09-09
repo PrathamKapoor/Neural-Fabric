@@ -28,12 +28,12 @@ if REPO not in sys.path:
     sys.path.insert(0, REPO)
 
 from fabric.router.router import Router
+from fabric.primitives.cost_model import (
+    PRIM_FLOPS, PRIM_NAMES, ROUTER_FLOPS, COST_MODEL_VERSION,
+)
 from evaluation.synthetic_dataset import make_sample
 
-PRIM_NAMES = ["mlp", "cnn", "attention"]
-PRIM_FLOPS = {"mlp": 17152, "cnn": 1152, "attention": 12288}
 LABEL_MAP = {"dense": 0, "spatial": 1, "relational": 2}
-ROUTER_FLOPS = 2 * 64 * 3
 
 
 def softmax(h):
@@ -223,9 +223,14 @@ def main():
             "mean_best_fixed": round(sum(base_acc) / len(base_acc), 4),
         }
         print("paired:", paired)
+    import datetime
+    corrected = "--corrected" in sys.argv
     out = {
         "experiment": "nf12_routing_modes",
         "seeds": seeds,
+        "cost_model": COST_MODEL_VERSION, "prim_flops": dict(PRIM_FLOPS),
+        "corrected_run": corrected,
+        "timestamp": datetime.datetime.now().isoformat(),
         "elapsed_s": round(time.time() - t0, 2),
         "soft_reference": {
             "note": "identical soft training; replication flags per seed",
@@ -244,9 +249,11 @@ def main():
             "rows": hard_rows},
         "paired_vs_best_fixed": paired,
     }
-    with open("experiments/results/nf12_routing_modes.json", "w") as f:
+    path = ("experiments/results/nf12_routing_modes_corrected.json"
+            if corrected else "experiments/results/nf12_routing_modes.json")
+    with open(path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[DONE] NF-12 saved to experiments/results/nf12_routing_modes.json")
+    print(f"[DONE] NF-12 saved to {path}")
 
 
 if __name__ == "__main__":

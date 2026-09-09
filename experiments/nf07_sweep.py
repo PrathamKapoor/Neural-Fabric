@@ -23,11 +23,10 @@ if sys_path not in sys.path:
     sys.path.insert(0, sys_path)
 
 from fabric.router.router import Router
+from fabric.primitives.cost_model import (
+    PRIM_FLOPS, TOTAL_FLOPS, PRIM_NAMES, ROUTER_FLOPS, COST_MODEL_VERSION,
+)
 from evaluation.synthetic_dataset import make_sample
-
-PRIM_NAMES = ["mlp", "cnn", "attention"]
-PRIM_FLOPS = {"mlp": 17152, "cnn": 1152, "attention": 12288}
-TOTAL_FLOPS = float(sum(PRIM_FLOPS.values()))
 LABEL_MAP = {"dense": 0, "spatial": 1, "relational": 2}
 
 
@@ -96,7 +95,7 @@ def train_cell(seed, lam_ent, lam_comp, n_epochs=30, n_train=100, n_test=50,
         "max_primitive_ratio": round(max_ratio, 4),
         "collapse_detected": bool(max_ratio > 0.85),
         "executed_soft_flops": int(TOTAL_FLOPS),
-        "top1_executed_flops": int(2 * 64 * 3 + top1_flops / n),
+        "top1_executed_flops": int(ROUTER_FLOPS + top1_flops / n),
     }
 
 
@@ -129,11 +128,18 @@ def main():
             print(f"lam_ent={le} lam_comp={lc} acc={cells[-1]['mean_accuracy']} "
                   f"ent={cells[-1]['mean_entropy']} top1flops={cells[-1]['mean_top1_flops']} "
                   f"collapse={cells[-1]['any_collapse']}")
+    import datetime
+    corrected = "--corrected" in sys.argv
     out = {"experiment": "nf07_sweep", "n_seeds": len(seeds),
+           "cost_model": COST_MODEL_VERSION, "prim_flops": dict(PRIM_FLOPS),
+           "corrected_run": corrected,
+           "timestamp": datetime.datetime.now().isoformat(),
            "elapsed_s": round(time.time() - t0, 2), "cells": cells}
-    with open("experiments/results/nf07_sweep_matrix.json", "w") as f:
+    path = ("experiments/results/nf07_sweep_matrix_corrected.json"
+            if corrected else "experiments/results/nf07_sweep_matrix.json")
+    with open(path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[DONE] NF-07 saved to experiments/results/nf07_sweep_matrix.json")
+    print(f"[DONE] NF-07 saved to {path}")
 
 
 if __name__ == "__main__":

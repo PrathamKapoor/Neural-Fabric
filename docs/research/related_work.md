@@ -43,4 +43,4 @@
 | **DARTS** | Mixed (Conv/Pool/Sep) | Static DAG | Network-wide | **No** (static after search) | Indirect |
 | **Neural Module Nets** | Semi-Heterogeneous | Parse-tree DAG | Sample | Yes (via text parser) | No |
 | **PonderNet** | Homogeneous (Step FFN) | Linear recurrent | Sample | Yes (depth only) | KL divergence prior |
-| **Neural Fabric** | **Heterogeneous** (MLP, CNN, Attn, GNN) | **Dynamic DAG / Sequential / Top-K** | **Instance** | **Yes (end-to-end learned)** | **Explicit Multi-Objective** |
+| **Neural Fabric** | **Heterogeneous** (MLP, CNN, legacy-Attn projection; GNN proposed, not implemented) | **Dynamic DAG / Sequential / Top-K** | **Instance** | **Yes (end-to-end learned)** | **Explicit Multi-Objective** |

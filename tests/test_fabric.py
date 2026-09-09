@@ -108,16 +108,17 @@ class TestPrimitives(unittest.TestCase):
         # Default: in_ch=1, out_ch=8, k=3
         cnn_default = CNN()
         expected_params = 1 * 8 * 3 * 3
-        expected_flops = 1 * 8 * 3 * 3 * 16
         self.assertEqual(cnn_default.params(), expected_params)
-        self.assertEqual(cnn_default.flops(), expected_flops)
         self.assertEqual(cnn_default.params(), 72)
-        self.assertEqual(cnn_default.flops(), 1152)
+        # Corrected boundary-aware count (v2): 7744 conv + 512 pooling.
+        # v1 (1152 = in*out*k*k*16) wrongly assumed 16 positions.
+        self.assertEqual(cnn_default.flops(), 8256)
 
-        # Custom dimensions
+        # Custom dimensions follow the same boundary-aware cost model.
+        from fabric.primitives.cost_model import cnn_flops
         cnn_custom = CNN(in_ch=2, out_ch=4, k=5)
         self.assertEqual(cnn_custom.params(), 2 * 4 * 5 * 5)
-        self.assertEqual(cnn_custom.flops(), 2 * 4 * 5 * 5 * 16)
+        self.assertEqual(cnn_custom.flops(), cnn_flops(2, 4, 5))
 
     def test_cnn_input_formats_and_edge_cases(self):
         """CNN handles flat lists, 2D/3D grids, and non-standard input sizes."""
@@ -163,16 +164,17 @@ class TestPrimitives(unittest.TestCase):
         """Attention reports correct FLOP count and parameters."""
         att_default = Attention()
         expected_params = 3 * 32 * 32
-        expected_flops = 3 * 32 * 32 * 4
         self.assertEqual(att_default.params(), expected_params)
-        self.assertEqual(att_default.flops(), expected_flops)
         self.assertEqual(att_default.params(), 3072)
-        self.assertEqual(att_default.flops(), 12288)
+        # Corrected: legacy forward executes ONE 32x32 Wq matvec (2048).
+        # v1 (12288 = 3*d*d*4) charged for Q/K/V + score math that never
+        # executes. See cost_model.py and attention.py LEGACY provenance.
+        self.assertEqual(att_default.flops(), 2048)
 
         # Custom dimension
         att_custom = Attention(d=16)
         self.assertEqual(att_custom.params(), 3 * 16 * 16)
-        self.assertEqual(att_custom.flops(), 3 * 16 * 16 * 4)
+        self.assertEqual(att_custom.flops(), 2 * 16 * 16)
 
     def test_attention_input_padding_and_truncation(self):
         """Attention pads short sequences and truncates long sequences."""

@@ -1,0 +1,289 @@
+{
+  "experiment": "nf12_routing_modes",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "cost_model": "v2-corrected",
+  "prim_flops": {
+    "mlp": 17152,
+    "cnn": 8256,
+    "attention": 2048
+  },
+  "corrected_run": true,
+  "timestamp": "2026-09-09T22:27:11.268361",
+  "elapsed_s": 0.99,
+  "soft_reference": {
+    "note": "identical soft training; replication flags per seed",
+    "accuracy": {
+      "mean": 0.94,
+      "std": 0.051,
+      "min": 0.86,
+      "max": 0.98,
+      "n": 5
+    },
+    "entropy": {
+      "mean": 0.302,
+      "std": 0.0405,
+      "min": 0.2463,
+      "max": 0.3423,
+      "n": 5
+    },
+    "rows": [
+      {
+        "seed": 1,
+        "test_accuracy": 0.86,
+        "test_entropy": 0.3099,
+        "max_primitive_ratio": 0.4,
+        "collapse_detected": false,
+        "matches_recorded_nf02": true
+      },
+      {
+        "seed": 2,
+        "test_accuracy": 0.98,
+        "test_entropy": 0.2463,
+        "max_primitive_ratio": 0.36,
+        "collapse_detected": false,
+        "matches_recorded_nf02": true
+      },
+      {
+        "seed": 3,
+        "test_accuracy": 0.98,
+        "test_entropy": 0.2762,
+        "max_primitive_ratio": 0.36,
+        "collapse_detected": false,
+        "matches_recorded_nf02": true
+      },
+      {
+        "seed": 4,
+        "test_accuracy": 0.92,
+        "test_entropy": 0.3423,
+        "max_primitive_ratio": 0.38,
+        "collapse_detected": false,
+        "matches_recorded_nf02": true
+      },
+      {
+        "seed": 5,
+        "test_accuracy": 0.96,
+        "test_entropy": 0.3355,
+        "max_primitive_ratio": 0.36,
+        "collapse_detected": false,
+        "matches_recorded_nf02": true
+      }
+    ]
+  },
+  "topk_execution": {
+    "1": {
+      "accuracy": {
+        "mean": 0.94,
+        "std": 0.051,
+        "min": 0.86,
+        "max": 0.98,
+        "n": 5
+      },
+      "executed_flops": {
+        "mean": 8835.2,
+        "std": 371.6984,
+        "min": 8238,
+        "max": 9198,
+        "n": 5
+      },
+      "rows": [
+        {
+          "seed": 1,
+          "test_accuracy": 0.86,
+          "executed_flops": 8238
+        },
+        {
+          "seed": 2,
+          "test_accuracy": 0.98,
+          "executed_flops": 9073
+        },
+        {
+          "seed": 3,
+          "test_accuracy": 0.98,
+          "executed_flops": 9198
+        },
+        {
+          "seed": 4,
+          "test_accuracy": 0.92,
+          "executed_flops": 8771
+        },
+        {
+          "seed": 5,
+          "test_accuracy": 0.96,
+          "executed_flops": 8896
+        }
+      ]
+    },
+    "2": {
+      "accuracy": {
+        "mean": 0.94,
+        "std": 0.051,
+        "min": 0.86,
+        "max": 0.98,
+        "n": 5
+      },
+      "executed_flops": {
+        "mean": 22307.0,
+        "std": 372.2486,
+        "min": 21852,
+        "max": 22812,
+        "n": 5
+      },
+      "rows": [
+        {
+          "seed": 1,
+          "test_accuracy": 0.86,
+          "executed_flops": 21852
+        },
+        {
+          "seed": 2,
+          "test_accuracy": 0.98,
+          "executed_flops": 22510
+        },
+        {
+          "seed": 3,
+          "test_accuracy": 0.98,
+          "executed_flops": 22083
+        },
+        {
+          "seed": 4,
+          "test_accuracy": 0.92,
+          "executed_flops": 22812
+        },
+        {
+          "seed": 5,
+          "test_accuracy": 0.96,
+          "executed_flops": 22278
+        }
+      ]
+    },
+    "3": {
+      "accuracy": {
+        "mean": 0.94,
+        "std": 0.051,
+        "min": 0.86,
+        "max": 0.98,
+        "n": 5
+      },
+      "executed_flops": {
+        "mean": 27840.0,
+        "std": 0.0,
+        "min": 27840,
+        "max": 27840,
+        "n": 5
+      },
+      "rows": [
+        {
+          "seed": 1,
+          "test_accuracy": 0.86,
+          "executed_flops": 27840
+        },
+        {
+          "seed": 2,
+          "test_accuracy": 0.98,
+          "executed_flops": 27840
+        },
+        {
+          "seed": 3,
+          "test_accuracy": 0.98,
+          "executed_flops": 27840
+        },
+        {
+          "seed": 4,
+          "test_accuracy": 0.92,
+          "executed_flops": 27840
+        },
+        {
+          "seed": 5,
+          "test_accuracy": 0.96,
+          "executed_flops": 27840
+        }
+      ]
+    }
+  },
+  "gumbel_hard": {
+    "accuracy": {
+      "mean": 0.888,
+      "std": 0.1035,
+      "min": 0.74,
+      "max": 0.98,
+      "n": 5
+    },
+    "entropy": {
+      "mean": 0.1417,
+      "std": 0.0425,
+      "min": 0.0898,
+      "max": 0.1914,
+      "n": 5
+    },
+    "executed_flops": {
+      "mean": 8105.8,
+      "std": 1242.8398,
+      "min": 6069,
+      "max": 9073,
+      "n": 5
+    },
+    "any_collapse": false,
+    "rows": [
+      {
+        "seed": 1,
+        "test_accuracy": 0.82,
+        "mean_entropy": 0.1914,
+        "max_primitive_ratio": 0.52,
+        "collapse_detected": false,
+        "executed_flops": 7774
+      },
+      {
+        "seed": 2,
+        "test_accuracy": 0.98,
+        "mean_entropy": 0.0898,
+        "max_primitive_ratio": 0.36,
+        "collapse_detected": false,
+        "executed_flops": 9073
+      },
+      {
+        "seed": 3,
+        "test_accuracy": 0.96,
+        "mean_entropy": 0.1125,
+        "max_primitive_ratio": 0.38,
+        "collapse_detected": false,
+        "executed_flops": 8771
+      },
+      {
+        "seed": 4,
+        "test_accuracy": 0.74,
+        "mean_entropy": 0.1384,
+        "max_primitive_ratio": 0.5,
+        "collapse_detected": false,
+        "executed_flops": 6069
+      },
+      {
+        "seed": 5,
+        "test_accuracy": 0.94,
+        "mean_entropy": 0.1763,
+        "max_primitive_ratio": 0.4,
+        "collapse_detected": false,
+        "executed_flops": 8842
+      }
+    ]
+  },
+  "paired_vs_best_fixed": {
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "soft_vs_best_fixed_p": 0.373901,
+    "hard_vs_best_fixed_p": 0.212574,
+    "mean_soft": 0.94,
+    "mean_hard": 0.888,
+    "mean_best_fixed": 0.948
+  }
+}

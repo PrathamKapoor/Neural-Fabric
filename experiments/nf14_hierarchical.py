@@ -25,14 +25,14 @@ if REPO not in sys.path:
 sys.path.insert(0, os.path.join(REPO, "experiments"))
 
 from fabric.router.router import Router
+from fabric.primitives.cost_model import (
+    PRIM_FLOPS, PRIM_NAMES, ROUTER_FLOPS, COST_MODEL_VERSION,
+)
 from evaluation.compositional import hierarchical_dataset
 from nf12_routing_modes import softmax, paired_t_pvalue, calc_stats
 from nf01_fixed_baselines import train_single_architecture
 
-PRIM_NAMES = ["mlp", "cnn", "attention"]
-PRIM_FLOPS = {"mlp": 17152, "cnn": 1152, "attention": 12288}
 LABEL_MAP = {"dense": 0, "spatial": 1, "relational": 2}
-ROUTER_FLOPS = 2 * 64 * 3
 
 
 def eval_router(router, test_data):
@@ -145,8 +145,13 @@ def main():
     top1 = [r["exec_flops"]["1"] for r in soft_rows]
     transfer_gap = (sum(overlap_acc["soft"]) / 5 -
                     sum(overlap_acc["transfer"]) / 5)
+    import datetime
+    corrected = "--corrected" in sys.argv
     out = {
         "experiment": "nf14_hierarchical",
+        "cost_model": COST_MODEL_VERSION, "prim_flops": dict(PRIM_FLOPS),
+        "corrected_run": corrected,
+        "timestamp": datetime.datetime.now().isoformat(),
         "hypothesis": "H-HIER: top-1 conditional execution preserves accuracy when signal moves",
         "falsification": "top-1 drops >5pp vs soft OR fixed wins significantly",
         "interpretation": (
@@ -175,10 +180,12 @@ def main():
             and (sum(overlap_acc["soft"]) / 5 -
                  sum(overlap_acc["transfer"]) / 5) < 0.05),
     }
-    with open("experiments/results/nf14_hierarchical.json", "w") as f:
+    path = ("experiments/results/nf14_hierarchical_corrected.json"
+            if corrected else "experiments/results/nf14_hierarchical.json")
+    with open(path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[DONE] NF-14", paired, "h_hier_supported =", out["h_hier_supported"],
-          flush=True)
+    print("[DONE] NF-14 ->", path, paired,
+          "h_hier_supported =", out["h_hier_supported"], flush=True)
 
 
 if __name__ == "__main__":

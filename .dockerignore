@@ -1,0 +1,53 @@
+# Neural Fabric production-image build context exclusions.
+# Purpose: secrets, VCS data, environments, caches, and experiment scratch
+# must NEVER enter the image. See Dockerfile header + tests/test_docker.py.
+
+# --- secrets / credentials (never bake; inject at runtime) ---
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.cert
+secrets/
+credentials/
+
+# --- version control ---
+.git
+.gitignore
+
+# --- Python environments / caches ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# --- Node / frontend build outputs ---
+node_modules/
+.svelte-kit/
+build/
+dist/
+
+# --- experiment scratch / checkpoints / run outputs ---
+experiments/runs/
+experiments/checkpoints/
+.agent_loop/
+.agent_loop_archive_*/
+agent_loop/
+
+# --- local tooling / OS noise ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# --- large weight binaries (not used by serving) ---
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors

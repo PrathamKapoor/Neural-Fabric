@@ -33,7 +33,8 @@ class TestNF07Sweep(unittest.TestCase):
         x = s["x"]
         y = {"dense": 0, "spatial": 1, "relational": 2}[s["label"]]
         lam_ent, lam_comp = 0.05, 0.5
-        F = [17152.0, 1152.0, 12288.0]
+        from fabric.primitives.cost_model import PRIM_FLOPS, PRIM_NAMES
+        F = [float(PRIM_FLOPS[p]) for p in PRIM_NAMES]
         Ft = sum(F)
         f = [v / Ft for v in F]
 

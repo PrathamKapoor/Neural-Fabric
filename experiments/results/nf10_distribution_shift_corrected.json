@@ -1,0 +1,22 @@
+{
+  "in_dist": {
+    "expected": "cnn",
+    "match_rate": 0.45,
+    "mean_compute": 13148.8
+  },
+  "shifted": {
+    "expected": "attention",
+    "match_rate": 0.0,
+    "mean_compute": 8256.0
+  },
+  "degradation": {
+    "match_diff": 0.45
+  },
+  "cost_model": "v2-corrected",
+  "corrected_run": true,
+  "prim_flops": {
+    "mlp": 17152,
+    "cnn": 8256,
+    "attention": 2048
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "probe": "attention_primitive_characterization",
+  "scope": "numerical/cost characterization only; no accuracy or routing claims",
+  "cost_model": "v2-corrected",
+  "timestamp": "2026-09-09T22:32:44.831207",
+  "legacy_attention": {
+    "name": "attention",
+    "legacy": true,
+    "flops": 2048,
+    "params": 3072,
+    "output_dim": 8,
+    "kv_zeroing_output_invariant": true,
+    "interpretation": "truncated Wq linear projection; K/V dead; no QKT; no softmax"
+  },
+  "genuine_softmax_attention": {
+    "name": "softmax_attention",
+    "flops": 5056,
+    "params": 192,
+    "output_dim": 8,
+    "kv_zeroing_changes_output": true,
+    "softmax_row_sums": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "interpretation": "honest Q/K/V + QKT + softmax + V weighting"
+  },
+  "legacy_vs_genuine_mean_abs_output_diff": 0.026122,
+  "ladder_use": "none \u2014 genuine primitive in no historical experiment"
+}

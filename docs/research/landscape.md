@@ -36,7 +36,7 @@ Conditional computation and dynamic neural architectures break this constraint. 
 - **Limitation**: Path is linearly sequential; early layers cannot be skipped to access late specialized modules.
 
 ### 2.4 Graph-Level Dynamic Synthesis (Neural Fabric)
-- **Mechanism**: The architecture for input $ is an instance-specific Directed Acyclic Graph  = (V_x, E_x)$, where vertices  \in V_x$ draw from a library of heterogeneous computational primitives $\mathcal{P} = \{ \text{MLP}, \text{CNN}, \text{Self-Attention}, \text{Relational/GNN}, \text{Memory} \}$.
+- **Mechanism**: The architecture for input $ is an instance-specific Directed Acyclic Graph  = (V_x, E_x)$, where vertices  \in V_x$ draw from a library of heterogeneous computational primitives (PROPOSED full set $\mathcal{P} = \{ \text{MLP}, \text{CNN}, \text{Self-Attention}, \text{Relational/GNN}, \text{Memory} \}$; IMPLEMENTED subset is $\{\text{MLP (ReLU)}, \text{CNN (k=3)}, \text{legacy attention projection}\}$ — see novelty.md §0).
 - **Execution**: Topological traversal of $, evaluated dynamically or sequentially with state-conditioned early termination.
 
 ---

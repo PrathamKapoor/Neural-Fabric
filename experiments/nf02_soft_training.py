@@ -112,8 +112,14 @@ def train_soft_single_seed(seed=1, n_epochs=30, n_train=100, n_test=50, lr=0.05)
     test_data = [make_sample(m, seed=seed * 2000 + i) for i, m in enumerate(test_modes)]
 
     label_map = {"dense": 0, "spatial": 1, "relational": 2}
-    prim_names = ["mlp", "cnn", "attention"]
-    prim_flops = {"mlp": 17152, "cnn": 1152, "attention": 12288}
+    import sys as _sys
+    from fabric.primitives.cost_model import (
+        PRIM_FLOPS as _PRIM_FLOPS, PRIM_NAMES as _PRIM_NAMES,
+        COST_MODEL_VERSION as _COST_MODEL_VERSION,
+    )
+    prim_names = list(_PRIM_NAMES)
+    prim_flops = dict(_PRIM_FLOPS)
+    _corrected = "--corrected" in _sys.argv
 
     router = Router(in_dim=64, n_prims=3, mode="soft", seed=seed)
     
@@ -232,11 +238,15 @@ def train_soft_single_seed(seed=1, n_epochs=30, n_train=100, n_test=50, lr=0.05)
             "executed_flops": executed_soft_flops,
             "weighted_expected_flops": round(weighted_compute, 2),
             "inference_time_ms": inference_time_ms
-        }
+        },
+        "cost_model": _COST_MODEL_VERSION,
+        "corrected_run": _corrected,
     }
 
     os.makedirs("experiments/runs", exist_ok=True)
-    with open(f"experiments/runs/nf02_soft_seed{seed}.json", "w") as f:
+    _run_name = (f"experiments/runs/nf02_soft_corrected_seed{seed}.json"
+                 if _corrected else f"experiments/runs/nf02_soft_seed{seed}.json")
+    with open(_run_name, "w") as f:
         json.dump(seed_result, f, indent=2)
 
     return seed_result
@@ -322,8 +332,14 @@ def run_nf02_soft_training(seeds=None, n_epochs=30, n_train=100, n_test=50, lr=0
         "per_seed_results": per_seed_results
     }
 
+    import sys as _sys2
+    from fabric.primitives.cost_model import COST_MODEL_VERSION as _V2
+    _corrected2 = "--corrected" in _sys2.argv
+    final_payload["cost_model"] = _V2
+    final_payload["corrected_run"] = _corrected2
     os.makedirs("experiments/results", exist_ok=True)
-    out_file = "experiments/results/nf02_soft_training.json"
+    out_file = ("experiments/results/nf02_soft_training_corrected.json"
+                if _corrected2 else "experiments/results/nf02_soft_training.json")
     with open(out_file, "w") as f:
         json.dump(final_payload, f, indent=2)
 
