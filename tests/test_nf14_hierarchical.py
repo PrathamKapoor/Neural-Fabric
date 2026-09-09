@@ -60,5 +60,27 @@ class TestNF14Artifact(unittest.TestCase):
         self.assertEqual(r1["exec_flops"], r2["exec_flops"])
 
 
+class TestNF15SeedExtension(unittest.TestCase):
+    def test_artifact_schema_and_values(self):
+        d = _load(os.path.join("experiments", "results",
+                               "nf15_seed_extension.json"))
+        self.assertEqual(d["seeds"], [6, 7, 8, 9, 10])
+        self.assertEqual(len(d["rows"]), 5)
+        for r in d["rows"]:
+            self.assertAlmostEqual(r["diff"],
+                                   round(r["soft_acc"] - r["best_fixed_acc"], 4))
+        diffs = [r["diff"] for r in d["rows"]]
+        self.assertAlmostEqual(sum(diffs) / len(diffs),
+                               d["mean_diff_new_seeds"], places=4)
+
+    def test_fresh_seeds_show_real_variation(self):
+        # Guards against a degenerate constant-output regression: seeds 6-10
+        # must not all be identical (they differ in the measured artifact).
+        d = _load(os.path.join("experiments", "results",
+                               "nf15_seed_extension.json"))
+        accs = {r["soft_acc"] for r in d["rows"]}
+        self.assertGreater(len(accs), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

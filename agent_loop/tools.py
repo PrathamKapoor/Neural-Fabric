@@ -13,6 +13,7 @@ locally by ToolExecutor. Safety rules (git safety is load-bearing):
 from __future__ import annotations
 
 import fnmatch
+import json
 import os
 import subprocess
 import time
@@ -71,7 +72,31 @@ WORKER_TOOLS = [
         "description": "List generated experiment artifacts (results/runs).",
         "parameters": {"type": "object", "properties": {
             "pattern": {"type": "string"}},
-         "required": []}}},
+          "required": []}}},
+    {"type": "function", "function": {
+        "name": "queue_job",
+        "description": ("Queue a DETACHED experiment job (survives this turn; "
+                        "poll later with poll_job). argv list only, no shell. "
+                        "Use for compute longer than a few minutes."),
+        "parameters": {"type": "object", "properties": {
+            "command": {"type": "array", "items": {"type": "string"},
+                        "description": "argv, e.g. [python, experiments/x.py]"},
+            "experiment_id": {"type": "string"},
+            "seed": {"type": "integer"},
+            "timeout_s": {"type": "number",
+                          "description": "experiment deadline seconds (hours allowed, max 86400)"},
+            "mem_mb": {"type": "number"},
+            "heartbeat": {"type": "string", "description": "repo-relative heartbeat JSONL path the script writes"},
+            "result": {"type": "string", "description": "repo-relative result file marking completion"},
+            "artifact": {"type": "string"},
+            "checkpoint": {"type": "string"}},
+          "required": ["command", "experiment_id"]}}},
+    {"type": "function", "function": {
+        "name": "poll_job",
+        "description": "Check a detached job: status/elapsed/heartbeat/log tail. Never blocks.",
+        "parameters": {"type": "object", "properties": {
+            "job_id": {"type": "string"}},
+          "required": ["job_id"]}}},
 ]
 
 _DESTRUCTIVE_GIT = ("reset --hard", "clean -f", "clean -fd", "checkout -- .",
@@ -146,6 +171,10 @@ class ToolExecutor:
                 result = {"ok": True, "output": self._git_diff(bool(args.get("stat_only", False)))}
             elif name == "list_artifacts":
                 result = self._artifacts(args.get("pattern", "*.json"))
+            elif name == "queue_job":
+                result = self._queue_job(args)
+            elif name == "poll_job":
+                result = self._poll_job(args.get("job_id", ""))
             else:
                 result = {"ok": False, "output": "unknown tool: %s" % name}
         except ToolRefusal as e:
@@ -242,6 +271,75 @@ class ToolExecutor:
                     except OSError:
                         pass
         return {"ok": True, "output": "\n".join(hits) or "(no artifacts)"}
+
+    # -- detached jobs (manager/compute decoupling) --------------------
+    def _job_manager(self):
+        from lab.jobs import JobManager
+        return JobManager(self.repo_root)
+
+    def _queue_job(self, args: dict) -> dict:
+        cmd = args.get("command")
+        if not isinstance(cmd, list) or not cmd or not all(isinstance(a, str) for a in cmd):
+            return {"ok": False, "output": "command must be a non-empty argv list"}
+        exe = Path(cmd[0])
+        if exe.is_absolute():
+            if exe.name.lower() not in ("python.exe", "pythonw.exe", "python"):
+                return {"ok": False, "output": "absolute executables limited to python"}
+        else:
+            # repo-relative executable/script: must stay jailed
+            try:
+                (self.repo_root / cmd[0]).resolve().relative_to(self.repo_root)
+            except ValueError:
+                return {"ok": False, "output": "command escapes repository root"}
+        try:
+            timeout_s = float(args.get("timeout_s", 3600.0))
+        except (TypeError, ValueError):
+            return {"ok": False, "output": "timeout_s must be numeric"}
+        timeout_s = min(max(timeout_s, 1.0), 86400.0)
+        try:
+            rec = self._job_manager().submit(
+                cmd, str(args.get("experiment_id", "adhoc")),
+                seed=int(args.get("seed", 0)), timeout_s=timeout_s,
+                mem_mb=args.get("mem_mb"),
+                heartbeat_rel=str(args.get("heartbeat", "") or ""),
+                result_rel=str(args.get("result", "") or ""),
+                artifact_rel=str(args.get("artifact", "") or ""),
+                checkpoint_rel=str(args.get("checkpoint", "") or ""))
+        except ValueError as e:
+            return {"ok": False, "output": "refused: %s" % e}
+        self._job_manager().start_due()
+        rec = self._job_manager()._read(rec["job_id"]) or rec
+        return {"ok": True, "output": "queued job %s status=%s (poll with poll_job)" % (
+            rec["job_id"], rec.get("status"))}
+
+    def _poll_job(self, job_id: str) -> dict:
+        if not job_id:
+            return {"ok": False, "output": "job_id required"}
+        jm = self._job_manager()
+        rec = jm.poll(str(job_id))
+        if rec is None:
+            return {"ok": False, "output": "unknown job: %s" % job_id}
+        tail = ""
+        try:
+            with open(rec.get("log_path", ""), "rb") as f:
+                f.seek(0, 2)
+                size = f.tell()
+                f.seek(max(0, size - 2000))
+                tail = f.read().decode("utf-8", "replace")
+        except OSError:
+            pass
+        started = rec.get("start_time") or int(time.time())
+        summary = {
+            "job_id": rec["job_id"], "status": rec.get("status"),
+            "elapsed_s": int(time.time()) - started,
+            "pid": rec.get("pid"), "heartbeat": rec.get("heartbeat", {}),
+            "progress": rec.get("progress", {}),
+            "exit_code": rec.get("exit_code"),
+            "failure_reason": rec.get("failure_reason", ""),
+            "result": rec.get("result_path", ""),
+            "log_tail": tail[-1500:],
+        }
+        return {"ok": True, "output": json.dumps(summary, indent=2)[:6000]}
 
 
 def _redact(args: dict) -> dict:

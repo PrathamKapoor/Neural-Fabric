@@ -34,13 +34,14 @@ A null comparative result with a real efficiency finding — not a victory.**
 |---|---|
 | NF-01 baselines (8 seeds) | `nf01_fixed_baselines*.json`, reruns byte-identical |
 | NF-02 soft 0.94±0.051, no collapse | `nf02_soft_training*.json`, reruns byte-identical |
-| Soft vs best-fixed null (p≈0.35–0.37) | independent paired recomputation (NF-12) |
+| Soft vs best-fixed null (p≈0.35–0.37; 10-seed extension p=0.054, mean −0.018) | independent paired recomputation (NF-12) + fresh seeds 6–10 (NF-15) |
 | Top-1 execution: 0.94 @ 10,005 FLOPs | `nf12_routing_modes.json` |
 | Gumbel-hard trains, no collapse, null (p=0.21) | same artifact; diversity 0.36–0.52 max-ratio |
 | NF-07 tradeoff (~4pp acc ↔ ~10% top-1 FLOPs) | `nf07_sweep_matrix.json`; gradients finite-diff verified 1e-10 |
 | Specialization MI 0.87/1.10, 93% correct-prim | `nf13_specialization.json`; MI independently recomputed exact |
 | Robustness 0/5 flips at noise ≤0.05, 1/5 at 0.1, 2/5 at 0.2 (n=5/level) | `nf09_robustness.json` (5-level curve) |
 | Conditional execution works | operator-local probe + `.agent_loop/verification_conditional_exec.json` |
+| Fresh-seed extension (6–10, detached job) | `nf15_seed_extension.json` |
 | 254/254 tests pass | `python -m unittest discover -s tests` |
 
 ## Negative / null findings (kept, not hidden)

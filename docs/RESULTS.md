@@ -10,4 +10,7 @@
 - Hierarchical transfer: hier-trained dynamic 0.74 ties fixed 0.75 (p=0.47);
   flat-trained router collapses on moved signals (0.56, p=0.003) —
   specialization is location-bound.
+- Fresh-seed extension (NF-15, seeds 6–10): diffs [-0.04,-0.02,-0.06,+0.02,
+  -0.04], mean −0.028; combined 10-seed paired p=0.054 (null holds, one
+  soft win on seed 9). Run detached via the job system with heartbeats.
 - All artifacts under `experiments/results/` + `experiments/runs/`.

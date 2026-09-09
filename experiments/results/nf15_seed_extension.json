@@ -1,0 +1,46 @@
+{
+  "experiment": "nf15_seed_extension",
+  "seeds": [
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "elapsed_s": 53.11,
+  "mean_diff_new_seeds": -0.028,
+  "all_zero": false,
+  "rows": [
+    {
+      "seed": 6,
+      "soft_acc": 0.96,
+      "best_fixed_acc": 1.0,
+      "diff": -0.04
+    },
+    {
+      "seed": 7,
+      "soft_acc": 0.98,
+      "best_fixed_acc": 1.0,
+      "diff": -0.02
+    },
+    {
+      "seed": 8,
+      "soft_acc": 0.86,
+      "best_fixed_acc": 0.92,
+      "diff": -0.06
+    },
+    {
+      "seed": 9,
+      "soft_acc": 1.0,
+      "best_fixed_acc": 0.98,
+      "diff": 0.02
+    },
+    {
+      "seed": 10,
+      "soft_acc": 0.92,
+      "best_fixed_acc": 0.96,
+      "diff": -0.04
+    }
+  ],
+  "interpretation": "Fresh-seed differences: see rows."
+}

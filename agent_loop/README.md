@@ -205,6 +205,36 @@ sleep, so a slow endpoint is always visible.
 Restart-safe: `--resume` picks up counters, objective, research state, and
 the SAME absolute deadline (the clock is never reset).
 
+## Detached experiment jobs (`lab/jobs.py`)
+
+Three timeouts that must never be conflated: LLM call
+(`REQUEST_TIMEOUT_S`), worker task (`WORKER_TASK_TIMEOUT_SECONDS`),
+experiment deadline (per-job, hours allowed). A worker queues long compute
+with `queue_job` (argv list, jailed paths, no shell) and returns
+immediately; `poll_job` reports status/elapsed/heartbeat/log tail without
+blocking. Jobs persist in `.agent_loop/jobs/`, survive LLM termination
+(detached process group + redirected stdio + PID tracking), and support
+heartbeats, checkpoints with resume, per-seed tracking, resource-aware
+scheduling (CPU/RAM/disk/GPU probe; queue reasons recorded), deadline kill
+(process tree), cancel, orphan detection, requeue, and restart recovery
+(`recover()`). Provider outages never kill running compute: jobs are OS
+processes, not model calls.
+
+## Provider failure behavior
+
+Failures are classified (`PROVIDER_RATE_LIMITED/UNAVAILABLE/TIMEOUT/
+AUTH_FAILURE/ERROR`) with Retry-After + jitter. An anti-tarpit hard
+deadline bounds every call even when a provider holds connections open
+indefinitely. Exhaustion is recorded as BLOCKED (never as research
+success); running jobs continue and orchestration resumes via `--resume`.
+
+## Hardware
+
+`lab.jobs.resources()` reports CPU/RAM/disk plus GPU presence. This
+machine: 6 CPUs, ~8GB RAM, NVIDIA GTX 1650 (4GB) present — but the venv
+torch build is CPU-only, so no GPU execution is performed or claimed.
+The scheduler records GPU presence for future CUDA-capable stacks.
+
 ## Safety behavior
 
 - Manager has no file tools by construction; worker paths are jailed to the repo.

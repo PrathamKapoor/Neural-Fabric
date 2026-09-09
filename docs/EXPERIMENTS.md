@@ -21,6 +21,7 @@ persist alongside mean/std/CI.
 | NF-12 | routing modes + paired tests | 5 | `.../nf12_routing_modes.json` |
 | NF-13 | specialization (MI) | 5 | `.../nf13_specialization.json` |
 | NF-14 | hierarchical transfer | 5 | `.../nf14_hierarchical.json` |
+| NF-15 | fresh-seed extension (6–10) | 5 | `.../nf15_seed_extension.json` |
 
 Rerun any script directly (e.g. `.venv\Scripts\python.exe
 experiments\nf02_soft_training.py`); artifacts regenerate byte-identically

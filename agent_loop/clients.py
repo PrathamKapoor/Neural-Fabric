@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import json
 import random
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -49,6 +50,11 @@ TRANSIENT_STATUS = {408, 409, 425, 429, 500, 502, 503, 504}
 # loop's own budgets (not the provider's ask) govern.
 MAX_RETRY_AFTER_S = 120.0
 
+# Hard wall-clock cap above the socket timeout: some providers tarpit
+# requests (accept + hold the connection open, dribbling bytes so that
+# socket timeouts never fire). Without this, one call can hang forever.
+HARD_DEADLINE_MARGIN_S = 30.0
+
 _JSON_REJECT_HINTS = ("response_format", "json_object", "response format",
                       "unsupported parameter", "unsupported value")
 
@@ -67,7 +73,34 @@ class OpenAICompatibleClient:
 
     # -- low level -----------------------------------------------------
     def _post(self, payload: dict) -> dict:
+        """POST with an absolute wall-clock deadline (anti-tarpit).
+
+        The socket timeout alone is insufficient: a provider holding the
+        connection open defeats it. The daemon worker thread is abandoned
+        (never joined beyond the deadline) so a hung call always surfaces
+        as TransientApiError within timeout_s + margin.
+        """
+        box: dict = {}
         data = json.dumps(payload).encode("utf-8")
+
+        def _do():
+            try:
+                box["result"] = self._post_once(data)
+            except Exception as e:  # noqa: BLE001 - marshalled to caller
+                box["error"] = e
+
+        worker = threading.Thread(target=_do, daemon=True)
+        worker.start()
+        worker.join(self.timeout_s + HARD_DEADLINE_MARGIN_S)
+        if worker.is_alive():
+            raise TransientApiError(
+                "request exceeded hard deadline (%.0fs); provider holding "
+                "the connection" % (self.timeout_s + HARD_DEADLINE_MARGIN_S))
+        if "error" in box:
+            raise box["error"]
+        return box["result"]
+
+    def _post_once(self, data: bytes) -> dict:
         req = urllib.request.Request(
             self.base_url + "/chat/completions",
             data=data,
