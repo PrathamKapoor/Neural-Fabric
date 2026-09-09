@@ -54,3 +54,19 @@
 - NF-13 "attention" selections are mechanistically legacy-projection
   selections; MI/specialization numbers stand, genuine-attention reading
   is excluded.
+
+## Statistical reporting caveats (apply to every p-value / CI above)
+
+- All p-values are UNCORRECTED for multiple contrasts (NF-07 tests 8
+  penalty cells against one baseline). Treat p≈0.0006/0.006 as
+  within-experiment evidence, not family-wise significance.
+- n=10 seeds; test accuracy granularity is 0.02 (50-sample test sets);
+  CIs assume approximate t-normality on bounded discrete differences —
+  sign counts (10/10, 8/10) weigh equally with p-values.
+- Synthetic benchmark only; no generalization claim beyond the protocol.
+- NF-15 "combined 10-seed p=0.054" derivation (stored here, not in a
+  separate artifact): 10 paired diffs = NF-12 seeds 1–5 soft-minus-best-fixed
+  [0, 0, 0, −0.04, 0] (from `nf12_routing_modes_corrected.json` soft rows
+  vs `nf01_fixed_10seed_corrected.json` per-seed best) + NF-15 seeds 6–10
+  [−0.04, −0.02, −0.06, +0.02, −0.04]; mean −0.018, t=−2.21, df=9,
+  two-tailed p≈0.054 (null holds).

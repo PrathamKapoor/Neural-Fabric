@@ -5,7 +5,9 @@ COMPLETE (see `lab/registry.py`).
 
 ## RQ-NF (COMPLETE): heterogeneous conditional composition vs fixed baselines
 - Verdict: comparative null (paired p≈0.37/0.21); top-1 efficiency real
-  (41.7% vs fixed-MLP); specialization measurable (MI 0.87).
+  (48.5% vs fixed-MLP on 5-seed corrected rerun; 48.7% descriptive on
+  10-seed means — unpaired, see `docs/RESULTS.md`); specialization
+  measurable (MI 0.87).
 - Evidence: `experiments/results/nf*.json`, `docs/PROJECT_COMPLETE.md`.
 
 ## RQ-HIER (TESTED): transfer to hierarchical composition
