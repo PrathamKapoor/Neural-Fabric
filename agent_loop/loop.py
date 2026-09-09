@@ -206,6 +206,15 @@ class AgentLoop:
             verification = self._verify_step(iteration, decision, report,
                                              evidence, pre_changed)
             report["verification"] = verification
+            analysis = self._analyze_step(iteration, decision, report,
+                                          evidence, verification)
+            report["analysis"] = analysis
+            if analysis.get("critic_flags"):
+                self.state.update_research(
+                    {"next_task": ""},
+                    {"status": "done", "recommendation": "",
+                     "problems": ["critic: " + f for f in
+                                  analysis["critic_flags"][:3]]})
             self.state.save_worker_report(iteration, report)
 
             # 4. Book-keeping: failures, research, totals, history --------
@@ -227,6 +236,7 @@ class AgentLoop:
                 "worker_model": report.get("_model", ""),
                 "verification": verification.get("verdict", "-"),
                 "task_state": verification.get("task_state", "-"),
+                "critic": ",".join(analysis.get("critic_flags", []))[:200],
                 "gate_findings": list(verification.get("gate_findings", []))[:5],
                 "changes": report.get("changes", [])[:10],
                 "tests": report.get("tests", [])[:10],
@@ -607,7 +617,8 @@ class AgentLoop:
                         "worker_status": status,
                         "gate_findings": [], "llm": None,
                         "verdict": "INCONCLUSIVE", "task_state": "VERIFYING",
-                        "changed_delta": len(changed)}
+                        "changed_delta": len(changed),
+                        "changed_paths": [str(c)[:200] for c in changed[:50]]}
 
         tracker = StagnationTracker(
             self.state, repeat=self.cfg.stagnation_repeat,
@@ -705,6 +716,70 @@ class AgentLoop:
                      % (" (%s)" % last_error if last_error else ""))
         return None
 
+    def _analyze_step(self, iteration: int, decision: dict, report: dict,
+                      evidence: dict, verification: dict) -> dict:
+        """Analyst (deterministic) + critic (deterministic) stage.
+
+        Classifies the report's claims, runs critic alternatives on accepted
+        work, and self-audits changed docs against this iteration's evidence.
+        Never raises; never spends model quota (LLM critic only when
+        TESTER_CRITIC is enabled, reusing the tester backends once).
+        """
+        import re as _re
+        from lab import analyze as _analyze
+        from lab import critic as _critic
+        record: dict = {"iteration": iteration, "claim_kinds": {},
+                        "critic_flags": [], "self_audit": [],
+                        "llm_critic": None}
+        blob_parts = (list(report.get("evidence", []) or [])
+                      + [report.get("recommendation", "")])
+        for part in blob_parts[:6]:
+            kind = _analyze.claim_kind(part)
+            record["claim_kinds"][kind] = record["claim_kinds"].get(kind, 0) + 1
+        if verification.get("verdict") == "PASS":
+            text = json.dumps(report)[:6000]
+            summary = {
+                "n_seeds": max([int(x) for x in
+                                _re.findall(r"(\d+)\s+seeds?", text.lower())]
+                               or [1]),
+                "budgets_matched": ("flops" in text.lower()
+                                    and "params" in text.lower()),
+                "splits_shared": True,
+                "variance_reported": ("std" in text.lower()
+                                      or "\u00b1" in text),
+                "mechanism": ("argmax" if "argmax" in text.lower() else ""),
+            }
+            for alt in _critic.generate_alternatives(summary):
+                record["critic_flags"].append(alt["alternative"])
+            crit = _critic.critique_conclusion(
+                report.get("recommendation", ""), {
+                    "n_seeds": summary["n_seeds"],
+                    "baseline_compared": ("baseline" in text.lower()),
+                    "replicated": False,
+                    "negative_checked": ("null" in text.lower()
+                                         or "no " in text.lower())})
+            record["critic_verdict"] = crit["verdict"]
+            record["critic_reasons"] = crit["reasons"]
+        md_changed = [f for f in (verification.get("changed_paths", [])
+                                  or []) if f.endswith(".md")]
+        if md_changed:
+            record["self_audit"] = _analyze.reconcile_iteration(
+                md_changed, {"artifacts": report.get("artifacts", []),
+                             "evidence_summary": ""}, self.repo_root)
+        if self.cfg.tester_critic and verification.get("verdict") == "PASS":
+            prompt = ("Adversarially review this accepted builder report. "
+                      "Attempt to falsify its conclusions; return exactly one "
+                      "verdict JSON {verdict: PASS|FAIL|INCONCLUSIVE, "
+                      "evidence: [], notes: ''}.\nREPORT:\n"
+                      + json.dumps(report)[:6000])
+            llm = self._run_tester_backends(prompt)
+            record["llm_critic"] = llm
+            if isinstance(llm, dict) and llm.get("verdict") == "FAIL":
+                record["critic_flags"].append("llm-critic FAIL")
+        self.state.save_analysis(iteration, record)
+        self.ui.analyze(record)
+        return record
+
     def _finish(self, status: str, reason: str) -> dict:
         self.state.set_status(status)
         self.terminated_reason = reason
@@ -724,6 +799,7 @@ class _NullUI:
     def retry_wait(self, *a, **k): pass
     def progress(self, *a, **k): pass
     def verify(self, *a, **k): pass
+    def analyze(self, *a, **k): pass
     def manager(self, *a, **k): pass
     def worker(self, *a, **k): pass
     def evidence(self, *a, **k): pass
@@ -797,6 +873,15 @@ class TerminalUI:
             if isinstance(record.get("llm"), dict) else "-"), flush=True)
         for f in list(record.get("gate_findings", []))[:4]:
             print("  gate: %s" % str(f)[:200], flush=True)
+
+    def analyze(self, record):
+        print("ANALYZE kinds=%s critic=%s self_audit=%d" % (
+            record.get("claim_kinds"), record.get("critic_verdict", "-"),
+            len(record.get("self_audit", []))), flush=True)
+        for f in list(record.get("critic_flags", []))[:4]:
+            print("  critic: %s" % str(f)[:200], flush=True)
+        for f in list(record.get("self_audit", []))[:4]:
+            print("  audit: %s" % str(f)[:200], flush=True)
 
     def evidence(self, summary):
         print("EVIDENCE %s" % summary, flush=True)

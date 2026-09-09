@@ -24,6 +24,8 @@
 # Allow source directories
 !agent_loop/
 !agent_loop/**
+!lab/
+!lab/**
 !docs/
 !docs/**
 !fabric/

@@ -78,6 +78,7 @@ DEFAULT_MANAGER_EVIDENCE_CHARS = 8000
 DEFAULT_TESTER_BACKEND = "opencode"
 DEFAULT_TESTER_TIMEOUT_S = 300.0
 DEFAULT_TESTER_MODEL = ""
+DEFAULT_TESTER_CRITIC = False
 DEFAULT_STAGNATION_REPEAT = 3
 DEFAULT_STAGNATION_WINDOW = 6
 
@@ -151,6 +152,7 @@ class LoopConfig:
     tester_backend: str = DEFAULT_TESTER_BACKEND
     tester_timeout_s: float = DEFAULT_TESTER_TIMEOUT_S
     tester_model: str = DEFAULT_TESTER_MODEL
+    tester_critic: bool = DEFAULT_TESTER_CRITIC
     stagnation_repeat: int = DEFAULT_STAGNATION_REPEAT
     stagnation_window: int = DEFAULT_STAGNATION_WINDOW
     state_dir: str = ".agent_loop"
@@ -235,6 +237,7 @@ class LoopConfig:
             tester_timeout_s=float(os.environ.get(
                 "TESTER_TIMEOUT_S", str(DEFAULT_TESTER_TIMEOUT_S))),
             tester_model=os.environ.get("TESTER_MODEL", DEFAULT_TESTER_MODEL),
+            tester_critic=_env_flag("TESTER_CRITIC", DEFAULT_TESTER_CRITIC),
             stagnation_repeat=int(os.environ.get(
                 "STAGNATION_REPEAT", str(DEFAULT_STAGNATION_REPEAT))),
             stagnation_window=int(os.environ.get(

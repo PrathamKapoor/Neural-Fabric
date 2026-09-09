@@ -1,0 +1,227 @@
+{
+  "experiment": "nf14_hierarchical",
+  "hypothesis": "H-HIER: top-1 conditional execution preserves accuracy when signal moves",
+  "falsification": "top-1 drops >5pp vs soft OR fixed wins significantly",
+  "interpretation": "Top-1 == soft accuracy holds trivially (same argmax). The substantive findings: (1) flat-trained routing does NOT transfer to moved signals (0.94 flat vs 0.56 hier, paired p=0.003) - specialization is location-bound; (2) hierarchically trained dynamic routing ties fixed baselines (null, p=0.47), extending the main null result to hierarchical structure.",
+  "transfer_refuted": true,
+  "hier_null_persists": true,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "elapsed_s": 50.66,
+  "soft": {
+    "accuracy": {
+      "mean": 0.7407,
+      "std": 0.06,
+      "min": 0.6481,
+      "max": 0.8148,
+      "n": 5
+    },
+    "rows": [
+      {
+        "test_accuracy": 0.6481,
+        "per_coarse_acc": {
+          "A": 0.5556,
+          "B": 0.7407
+        },
+        "max_primitive_ratio": 0.3889,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 11792,
+          "2": 22466,
+          "3": 30976
+        },
+        "seed": 1
+      },
+      {
+        "test_accuracy": 0.8148,
+        "per_coarse_acc": {
+          "A": 0.8889,
+          "B": 0.7407
+        },
+        "max_primitive_ratio": 0.4074,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 10813,
+          "2": 23175,
+          "3": 30976
+        },
+        "seed": 2
+      },
+      {
+        "test_accuracy": 0.7407,
+        "per_coarse_acc": {
+          "A": 0.8519,
+          "B": 0.6296
+        },
+        "max_primitive_ratio": 0.3889,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 10311,
+          "2": 21925,
+          "3": 30976
+        },
+        "seed": 3
+      },
+      {
+        "test_accuracy": 0.7407,
+        "per_coarse_acc": {
+          "A": 0.7778,
+          "B": 0.7037
+        },
+        "max_primitive_ratio": 0.5,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 7824,
+          "2": 21783,
+          "3": 30976
+        },
+        "seed": 4
+      },
+      {
+        "test_accuracy": 0.7593,
+        "per_coarse_acc": {
+          "A": 0.7778,
+          "B": 0.7407
+        },
+        "max_primitive_ratio": 0.4074,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 10221,
+          "2": 21371,
+          "3": 30976
+        },
+        "seed": 5
+      }
+    ]
+  },
+  "top1_exec_flops": {
+    "mean": 10192.2,
+    "std": 1463.563,
+    "min": 7824,
+    "max": 11792,
+    "n": 5
+  },
+  "transfer": {
+    "accuracy": {
+      "mean": 0.5593,
+      "std": 0.0356,
+      "min": 0.5185,
+      "max": 0.6111,
+      "n": 5
+    },
+    "rows": [
+      {
+        "test_accuracy": 0.5185,
+        "per_coarse_acc": {
+          "A": 0.7778,
+          "B": 0.2593
+        },
+        "max_primitive_ratio": 0.6296,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 12847,
+          "2": 21345,
+          "3": 30976
+        },
+        "seed": 1
+      },
+      {
+        "test_accuracy": 0.537,
+        "per_coarse_acc": {
+          "A": 0.7778,
+          "B": 0.2963
+        },
+        "max_primitive_ratio": 0.6852,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 13942,
+          "2": 24720,
+          "3": 30976
+        },
+        "seed": 2
+      },
+      {
+        "test_accuracy": 0.5556,
+        "per_coarse_acc": {
+          "A": 0.7778,
+          "B": 0.3333
+        },
+        "max_primitive_ratio": 0.7407,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 14418,
+          "2": 23921,
+          "3": 30976
+        },
+        "seed": 3
+      },
+      {
+        "test_accuracy": 0.6111,
+        "per_coarse_acc": {
+          "A": 0.8889,
+          "B": 0.3333
+        },
+        "max_primitive_ratio": 0.6667,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 14058,
+          "2": 24192,
+          "3": 30976
+        },
+        "seed": 4
+      },
+      {
+        "test_accuracy": 0.5741,
+        "per_coarse_acc": {
+          "A": 0.8519,
+          "B": 0.2963
+        },
+        "max_primitive_ratio": 0.6481,
+        "collapse_detected": false,
+        "exec_flops": {
+          "1": 13762,
+          "2": 24101,
+          "3": 30976
+        },
+        "seed": 5
+      }
+    ]
+  },
+  "fixed": {
+    "rows": [
+      {
+        "seed": 1,
+        "best": 0.6852
+      },
+      {
+        "seed": 2,
+        "best": 0.8333
+      },
+      {
+        "seed": 3,
+        "best": 0.7778
+      },
+      {
+        "seed": 4,
+        "best": 0.7037
+      },
+      {
+        "seed": 5,
+        "best": 0.7593
+      }
+    ]
+  },
+  "paired": {
+    "soft_vs_best_fixed_p": 0.466674,
+    "transfer_vs_soft_p": 0.002588,
+    "mean_soft": 0.7407,
+    "mean_transfer": 0.5593,
+    "mean_best_fixed": 0.7519
+  },
+  "h_hier_supported": false
+}

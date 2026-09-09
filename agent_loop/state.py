@@ -236,6 +236,10 @@ class LoopState:
         """Immutable per-iteration tester verdict + gate findings."""
         self._append_history(iteration, "verification", record)
 
+    def save_analysis(self, iteration: int, record: dict):
+        """Immutable per-iteration analyst/critic record."""
+        self._append_history(iteration, "analysis", record)
+
     def save_invocations(self, iteration: int, phase: str, invocations: list):
         """Persist per-attempt model invocation records (incl. fallbacks).
 

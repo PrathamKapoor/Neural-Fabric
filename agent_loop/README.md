@@ -39,6 +39,14 @@ external process needed.
   (`PLANNED → BUILDING → VERIFYING → EXPERIMENTING → EVIDENCE_CHECK →
   ACCEPTED`, with `REPAIR` / `REPLAN` failure paths) and stagnation signals
   persist in `.agent_loop` and feed the manager's next decision.
+- **Analyst / critic** (deterministic, zero quota): every iteration's claims
+  are classified (MEASURED/DERIVED/INFERRED/SPECULATIVE), critic alternatives
+  are generated for accepted work, and changed docs are reconciled against
+  iteration evidence. Optional LLM critic via `TESTER_CRITIC=true`.
+- **Research lab** (`lab/`): persistent question/hypothesis registry with
+  enforced falsification conditions, standardized experiment envelopes,
+  multi-seed runner, budget-parity checker, novelty attack, check-gated
+  idea generation, and a failure-pattern log. See `docs/ARCHITECTURE.md`.
 
 Topology note (2026-09-08, user-authorized): the previous DeepSeek V4 Pro /
 Inkling-Small topology proved unreachable (measured hangs + HTTP 403) and was

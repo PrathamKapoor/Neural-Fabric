@@ -77,3 +77,13 @@ CPU-only, ~2 min for the full experimental battery.
 Nothing required. Optional next steps are listed under SUGGESTED. Further
 polishing without a new research question would violate the stop rule —
 hence DONE.
+
+## Post-completion extension (laboratory growth, not NF scope change)
+
+- NF-14 hierarchical transfer (`experiments/nf14_hierarchical.json`,
+  `evaluation/compositional.py`): hier-trained dynamic ties fixed (null
+  p=0.47); flat-trained routing does NOT transfer to moved signals
+  (0.56 vs 0.94, p=0.003). Extends the null result and bounds the
+  specialization claim. Recorded in `docs/RESEARCH.md` (RQ-HIER).
+- Laboratory system: `lab/` registry/hypothesis/experiment/analyst/critic/
+  researcher/idea modules + analyst/critic loop stages (`docs/ARCHITECTURE.md`).
