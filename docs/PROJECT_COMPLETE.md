@@ -9,8 +9,8 @@ interpretability vs fixed architectures under comparable budgets?*
 **Conclusion (evidence-backed): on the controlled synthetic benchmark, the
 dynamic fabric does NOT beat strong fixed baselines on accuracy (all paired
 comparisons null), but DOES deliver identical accuracy (same argmax, by
-construction) at 41.9% less compute than the fixed-MLP baseline (9,966 vs
-17,152 FLOPs; 67.8% less than full-soft execution at 30,976), with
+construction) at 41.7% less compute than the fixed-MLP baseline (10,005 vs
+17,152 FLOPs; 67.7% less than full-soft execution at 30,976), with
 consistent, measurable route specialization (MI 0.87/1.10 nats, 93%
 correct-primitive rate, stable across seeds; plug-in MI bias ≈0.02 nats).
 A null comparative result with a real efficiency finding — not a victory.**
@@ -35,7 +35,7 @@ A null comparative result with a real efficiency finding — not a victory.**
 | NF-01 baselines (8 seeds) | `nf01_fixed_baselines*.json`, reruns byte-identical |
 | NF-02 soft 0.94±0.051, no collapse | `nf02_soft_training*.json`, reruns byte-identical |
 | Soft vs best-fixed null (p≈0.35–0.37) | independent paired recomputation (NF-12) |
-| Top-1 execution: 0.94 @ 9,966 FLOPs | `nf12_routing_modes.json` |
+| Top-1 execution: 0.94 @ 10,005 FLOPs | `nf12_routing_modes.json` |
 | Gumbel-hard trains, no collapse, null (p=0.21) | same artifact; diversity 0.36–0.52 max-ratio |
 | NF-07 tradeoff (~4pp acc ↔ ~10% top-1 FLOPs) | `nf07_sweep_matrix.json`; gradients finite-diff verified 1e-10 |
 | Specialization MI 0.87/1.10, 93% correct-prim | `nf13_specialization.json`; MI independently recomputed exact |

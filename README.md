@@ -25,9 +25,9 @@
 
 - Best fixed: MLP **0.9475±0.0399** @ 17,152 FLOPs (8 seeds).
 - Soft dynamic: **0.94±0.051** @ 30,976 FLOPs — paired diff −0.005, **p=0.35 (null)**.
-- Top-1 execution of the same router: **0.94 @ 9,966 FLOPs** — identical
-  accuracy by construction (same argmax as soft); 41.9% less compute than
-  the fixed-MLP baseline (17,152 FLOPs) and 67.8% less than full-soft
+- Top-1 execution of the same router: **0.94 @ 10,005 FLOPs** — identical
+  accuracy by construction (same argmax as soft); 41.7% less compute than
+  the fixed-MLP baseline (17,152 FLOPs) and 67.7% less than full-soft
   execution (30,976 FLOPs). Efficiency without superiority.
 - Gumbel-hard: 0.888±0.104, no collapse, p=0.21 vs fixed (null, higher variance).
 - Specialization is real and interpretable: P(correct primitive | input mode) = 0.93, MI = 0.87 nats (max 1.10).
