@@ -8,8 +8,11 @@ interpretability vs fixed architectures under comparable budgets?*
 
 **Conclusion (evidence-backed): on the controlled synthetic benchmark, the
 dynamic fabric does NOT beat strong fixed baselines on accuracy (all paired
-comparisons null), but DOES deliver matched accuracy at substantially lower
-executed compute via top-1 execution, with genuinely interpretable routing.
+comparisons null), but DOES deliver identical accuracy (same argmax, by
+construction) at 41.9% less compute than the fixed-MLP baseline (9,966 vs
+17,152 FLOPs; 67.8% less than full-soft execution at 30,976), with
+consistent, measurable route specialization (MI 0.87/1.10 nats, 93%
+correct-primitive rate, stable across seeds; plug-in MI bias ≈0.02 nats).
 A null comparative result with a real efficiency finding — not a victory.**
 
 ## IMPLEMENTED (code exists and runs)
@@ -36,7 +39,7 @@ A null comparative result with a real efficiency finding — not a victory.**
 | Gumbel-hard trains, no collapse, null (p=0.21) | same artifact; diversity 0.36–0.52 max-ratio |
 | NF-07 tradeoff (~4pp acc ↔ ~10% top-1 FLOPs) | `nf07_sweep_matrix.json`; gradients finite-diff verified 1e-10 |
 | Specialization MI 0.87/1.10, 93% correct-prim | `nf13_specialization.json`; MI independently recomputed exact |
-| Robustness stable ≤0.05 noise, degrades ≥0.1 | `nf09_robustness.json` (5-level curve) |
+| Robustness 0/5 flips at noise ≤0.05, 1/5 at 0.1, 2/5 at 0.2 (n=5/level) | `nf09_robustness.json` (5-level curve) |
 | Conditional execution works | operator-local probe + `.agent_loop/verification_conditional_exec.json` |
 | 254/254 tests pass | `python -m unittest discover -s tests` |
 

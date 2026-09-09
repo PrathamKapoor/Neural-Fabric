@@ -10,7 +10,7 @@
   "max_mi_nats": 1.0986,
   "mean_mi_nats": 0.8691,
   "mean_correct_primitive_rate": 0.9266,
-  "elapsed_s": 0.48,
+  "elapsed_s": 0.49,
   "rows": [
     {
       "seed": 1,

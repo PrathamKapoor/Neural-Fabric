@@ -7,7 +7,7 @@
     4,
     5
   ],
-  "elapsed_s": 1.0,
+  "elapsed_s": 1.03,
   "soft_reference": {
     "note": "identical soft training; replication flags per seed",
     "accuracy": {
