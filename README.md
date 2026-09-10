@@ -186,9 +186,3 @@ python backend/api/app.py   # :8080  (GET /health; NF_HOST/NF_PORT configurable)
 ## Documentation
 - [Results & statistical caveats](docs/RESULTS.md) · [Experiments](docs/EXPERIMENTS.md) · [Research registry](docs/RESEARCH.md) · [Reproducibility](docs/REPRODUCIBILITY.md) · [Architecture](docs/ARCHITECTURE.md) · [Evidence ledger](docs/PROJECT_COMPLETE.md) · [Prior art & novelty](docs/research/)
 
-## Known Limitations (honest)
-- Synthetic 64-dim benchmark; real-world transfer NOT TESTED.
-- n=10 seeds; accuracy granularity 0.02 (50-sample tests); p-values uncorrected across contrasts.
-- Pure-Python numerics (torch variants exist for real-gradient runs); no validated GPU path.
-- `bench().fabric_accuracy_est` is intentionally `None` — accuracy has no cheap estimator.
-- Dynamic Docker build untested in this environment; 24h live autonomous operation not demonstrated (lab is locally tested + architecturally supported).
