@@ -55,15 +55,31 @@ class FabricHandler(BaseHTTPRequestHandler):
                 res = g.execute(x, prims)
                 self.send_response(200); self.send_header("Content-Type","application/json"); self.send_header("Access-Control-Allow-Origin","*"); self.end_headers()
                 self.wfile.write(json.dumps({"sequential_path":["cnn","attention","mlp"],"prediction_length":len(res) if isinstance(res,list) else 0,"computational_graph":g.to_json()}).encode())
+            else:
                 self.send_error(404)
         except Exception as e:
             self.send_response(500); self.send_header("Content-Type","application/json"); self.end_headers()
             self.wfile.write(json.dumps({"error":str(e)}).encode())
     def do_GET(self):
+        if self.path == "/health":
+            self.send_response(200); self.send_header("Content-Type","application/json"); self.send_header("Access-Control-Allow-Origin","*"); self.end_headers()
+            self.wfile.write(json.dumps({"status":"ok","service":"neural-fabric","version":"NF-01","engine_mode":"topk"}).encode())
+            return
         self.send_response(200); self.send_header("Content-Type","application/json"); self.send_header("Access-Control-Allow-Origin","*"); self.end_headers()
         self.wfile.write(json.dumps({"service":"neural-fabric","version":"NF-01","status":"running"}).encode())
 
+def main():
+    host = os.environ.get("NF_HOST", "0.0.0.0")
+    port = int(os.environ.get("NF_PORT", "8080"))
+    srv = HTTPServer((host, port), FabricHandler)
+    print("Neural Fabric API on http://%s:%d (NF_HOST/NF_PORT)" % (host, port), flush=True)
+    try:
+        srv.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        srv.server_close()
+        print("Neural Fabric API stopped cleanly.", flush=True)
+
 if __name__ == "__main__":
-    srv = HTTPServer(("0.0.0.0", 8080), FabricHandler)
-    print("Neural Fabric API on http://0.0.0.0:8080")
-    srv.serve_forever()
+    main()

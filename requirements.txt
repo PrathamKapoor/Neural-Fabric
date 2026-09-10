@@ -1,0 +1,10 @@
+# Neural Fabric research dependencies (measured 2026-09-09, Python 3.11.16).
+#
+# Scope honesty: the SERVING closure (backend/api/app.py + fabric/) is
+# stdlib-only and needs NOTHING below. These packages are required only for
+# research: training variants, evaluation numerics, and the test suite.
+# torch is CPU-only here; GPU wheels are NOT pinned because no GPU execution
+# was ever validated (see docs/REPRODUCIBILITY.md). Install CPU torch with:
+#   pip install torch==2.14.0+cpu --index-url https://download.pytorch.org/whl/cpu
+numpy==2.4.6
+pytest>=8

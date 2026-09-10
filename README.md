@@ -42,6 +42,10 @@
 ## Quick Run
 
 ```bash
+# Install (serving needs stdlib only; research/tests need numpy+torch CPU)
+pip install -r requirements.txt  # torch CPU: see header comment in requirements.txt
+# 60-second demo: live routing decisions, FLOPs, savings vs fixed MLP
+.venv\Scripts\python.exe scripts\demo_routing.py
 # Full test suite (stdlib + torch CPU only)
 .venv\Scripts\python.exe -m unittest discover -s tests
 # Key experiments (seconds each unless noted)
@@ -51,9 +55,13 @@
 .venv\Scripts\python.exe experiments\nf07_sweep.py
 .venv\Scripts\python.exe experiments\nf13_specialization.py
 .venv\Scripts\python.exe experiments\nf09_robustness.py
-# Backend demo
+# Backend demo (health: GET /health; config: NF_HOST/NF_PORT, default 0.0.0.0:8080)
 .venv\Scripts\python.exe backend\api\app.py   # :8080, open frontend/index.html
 ```
+
+> Rerunning an experiment overwrites its JSON in `experiments/results/`
+> (values are deterministic; only timestamp/elapsed change). Back up the
+> directory first if you need the committed artifacts byte-intact.
 
 ## Reproducibility
 
