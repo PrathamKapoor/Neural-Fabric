@@ -67,6 +67,18 @@ class TestServe(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn("selected", body)
 
+    def test_browser_json_preflight(self):
+        req = urllib.request.Request(
+            "http://127.0.0.1:%d/sequential" % self.port,
+            headers={"Origin": "http://localhost:3000",
+                     "Access-Control-Request-Method": "POST",
+                     "Access-Control-Request-Headers": "content-type"},
+            method="OPTIONS")
+        with urllib.request.urlopen(req, timeout=10) as response:
+            self.assertEqual(response.status, 200)
+            self.assertIn("content-type", response.headers.get(
+                "Access-Control-Allow-Headers", "").lower())
+
     def test_unknown_path_is_404(self):
         status, _ = _post(self.port, "/nope", {})
         self.assertEqual(status, 404)

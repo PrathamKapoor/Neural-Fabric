@@ -16,7 +16,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 class FabricHandler(BaseHTTPRequestHandler):
     def log_message(self, fmt, *args): pass
     def do_OPTIONS(self):
-        self.send_response(200); self.send_header("Access-Control-Allow-Origin","*"); self.send_header("Access-Control-Allow-Methods","POST,GET,OPTIONS"); self.end_headers()
+        self.send_response(200); self.send_header("Access-Control-Allow-Origin","*"); self.send_header("Access-Control-Allow-Methods","POST,GET,OPTIONS"); self.send_header("Access-Control-Allow-Headers","Content-Type"); self.end_headers()
     def do_POST(self):
         import urllib.parse
         content_len = int(self.headers.get('Content-Length',0))
