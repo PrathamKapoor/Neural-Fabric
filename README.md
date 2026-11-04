@@ -6,7 +6,9 @@ A research system that tests whether **input-conditioned composition of heteroge
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11.16-blue?style=flat-square)](docs/REPRODUCIBILITY.md) [![Tests](https://img.shields.io/badge/Tests-342_passing-brightgreen?style=flat-square)](tests/) [![Cost model](https://img.shields.io/badge/Cost_model-v2_corrected-orange?style=flat-square)](docs/RESULTS.md) [![Status](https://img.shields.io/badge/Status-research--complete-purple?style=flat-square)](docs/PROJECT_COMPLETE.md)
 
-**Dynamic routing does not beat fixed baselines on accuracy — but top-1 execution converts the same router into a reproducible compute/accuracy tradeoff, with measurable route specialization and honestly reported failures.**
+**The historical experiments compare router-selection accuracy and estimated computation, with measurable route specialization and reported negative results.**
+
+**Interpretation:** The historical NF-02 and NF-12 accuracy figures measure how accurately the router selects the synthetic input's assigned mode. They do not measure predictions produced by the selected primitives. The serving demo uses untrained weights, so its outputs are not evidence of trained end-to-end classification accuracy. FLOP figures are analytical estimates, not measured latency.
 
 ---
 
