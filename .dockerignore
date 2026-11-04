@@ -37,6 +37,7 @@ experiments/checkpoints/
 .agent_loop/
 .agent_loop_archive_*/
 agent_loop/
+artifacts/
 
 # --- local tooling / OS noise ---
 .vscode/

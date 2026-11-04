@@ -1,12 +1,70 @@
 # NEURAL FABRIC
 
+## Trained local classifier (new workflow)
+
+Neural Fabric now includes a small CPU classifier that learns from an offline,
+synthetic dataset. It predicts one of three classes for a 64-number vector
+using a trained router and three experts. This demonstrates end-to-end routing;
+it is not a general problem solver or evidence of real-world performance.
+The existing research scripts, legacy untrained demo and artifacts remain
+available below. Their router-selection accuracy is not end-to-end expert
+prediction accuracy. See [trained model design and limitations](docs/TRAINED_MODEL.md).
+
+```text
+64 numbers → router → selected experts → weighted logits → class probabilities
+                       ↳ modeled router + expert FLOPs
+```
+
+Python 3.11+ is intended; this workflow was locally checked with Python 3.13
+and CPU PyTorch 2.13. Install CPU PyTorch and pytest in a virtual environment:
+
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
+python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python -m pip install pytest
+python -m neural_fabric train-demo --output artifacts/demo-model.pt
+python -m neural_fabric evaluate --model artifacts/demo-model.pt --mode top1
+python -m neural_fabric evaluate --model artifacts/demo-model.pt --mode soft
+python -m neural_fabric predict --model artifacts/demo-model.pt --input examples/sample.json
+python -m neural_fabric.server --model artifacts/demo-model.pt
+```
+
+Open http://127.0.0.1:8080/ for the local UI. The API provides `GET /health`,
+`GET /model`, and `POST /predict`. For example, using curl:
+
+```bash
+curl -X POST http://127.0.0.1:8080/predict -H "Content-Type: application/json" --data-binary @examples/sample.json
+```
+
+The prediction JSON contains task `probabilities`, a separate `routing`
+object with expert probabilities and selections, and a `compute` object
+with signed savings and modeled FLOPs. Add `"mode": "soft"` or
+`"mode": "topk", "k": 2` to the request to change execution.
+The default is top-1. Run `python -m pytest tests/test_end_to_end.py
+tests/test_trained_api.py -q` for the new focused checks, or
+`python -m pytest tests/ -q` for the historical suite as well.
+
+The synthetic test set has 150 examples. For a reproducible descriptive
+comparison, evaluate both modes of the same checkpoint and its separately
+trained fixed small MLP; repeat training with distinct `--seed` values.
+Results depend on the chosen synthetic task and platform. FLOPs are analytic
+estimates, not latency; evaluation also reports separately timed CPU calls.
+
+## Historical research
+
+The section below records the earlier research prototype. Its accuracy numbers
+are router-selection results, not the end-to-end expert prediction results
+described above. The legacy Dockerfile starts the untrained historical API;
+it does not serve the new trained classifier.
+
 ### *Route less. Compute less. Prove it.*
 
 A research system that tests whether **input-conditioned composition of heterogeneous computational primitives** beats fixed architectures under comparable budgets — with corrected FLOP accounting, 10-seed statistics, preserved negative results, and a live demo you can run in a minute.
 
-[![Python 3.11](https://img.shields.io/badge/Python-3.11.16-blue?style=flat-square)](docs/REPRODUCIBILITY.md) [![Tests](https://img.shields.io/badge/Tests-342_passing-brightgreen?style=flat-square)](tests/) [![Cost model](https://img.shields.io/badge/Cost_model-v2_corrected-orange?style=flat-square)](docs/RESULTS.md) [![Status](https://img.shields.io/badge/Status-research--complete-purple?style=flat-square)](docs/PROJECT_COMPLETE.md)
-
-**Dynamic routing does not beat fixed baselines on accuracy — but top-1 execution converts the same router into a reproducible compute/accuracy tradeoff, with measurable route specialization and honestly reported failures.**
+The earlier experiments report a router-selection accuracy and modeled compute
+tradeoff; they do not establish an end-to-end expert accuracy tradeoff.
 
 ---
 

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neural Fabric classifier</title>
+<style>
+body{font:16px system-ui;max-width:780px;margin:2rem auto;padding:0 1rem;color:#172333;background:#f4f6fa}
+main{background:white;padding:1.5rem;border-radius:12px}textarea{width:100%;box-sizing:border-box;min-height:8rem}
+button,select{padding:.6rem;margin:.5rem 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef2f7;padding:1rem}
+</style></head><body><main>
+<h1>Neural Fabric</h1><p>Offline synthetic classifier. Enter 64 numbers as a JSON array.</p>
+<p id="status">Checking model…</p>
+<textarea id="input" aria-label="Input vector"></textarea>
+<p><label>Routing <select id="mode"><option>top1</option><option>soft</option><option>topk</option></select></label>
+<label>Top-k <select id="k"><option>1</option><option>2</option><option>3</option></select></label>
+<button id="run">Predict</button></p>
+<p>Prediction probabilities and routing probabilities are different. FLOPs are modeled estimates.</p>
+<pre id="output" aria-live="polite">No prediction yet.</pre></main>
+<script>
+document.querySelector('#input').value=JSON.stringify(Array(64).fill(0.1));
+fetch('/health').then(r=>r.json()).then(x=>document.querySelector('#status').textContent=x.model_loaded?'Model available':'Model unavailable').catch(()=>document.querySelector('#status').textContent='Backend unavailable');
+document.querySelector('#run').onclick=async()=>{
+  const out=document.querySelector('#output');
+  try{
+    const input=JSON.parse(document.querySelector('#input').value);
+    const response=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({input,mode:document.querySelector('#mode').value,k:Number(document.querySelector('#k').value)})});
+    const data=await response.json(); if(!response.ok) throw Error(data.error);
+    out.textContent=JSON.stringify(data,null,2);
+  }catch(e){out.textContent='Unable to predict: '+e.message}
+};
+</script></body></html>

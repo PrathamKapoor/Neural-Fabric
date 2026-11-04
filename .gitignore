@@ -17,6 +17,15 @@
 !bun.lockb
 !pyproject.toml
 !requirements.txt
+!flow.md
+!decisions.md
+!neural_fabric/
+!neural_fabric/**
+!examples/
+!examples/**
+!.github/
+!.github/workflows/
+!.github/workflows/**
 !uv.lock
 !tsconfig.json
 !svelte.config.js
@@ -66,4 +75,5 @@ Thumbs.db
 *.bin
 *.onnx
 *.safetensors
+artifacts/
 !experiments/checkpoints/.gitkeep
