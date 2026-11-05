@@ -24,6 +24,14 @@ with separate fixed baselines and an exploratory UCI Iris evaluation.
 - [ ] Commit and push.
 
 ## Verification
+- GitHub Actions run 42032860004 on c06d3c2 reported 15 failed, 333 passed
+  and 2 skipped on Linux. Windows-only process APIs caused detached-job
+  failures; TLS tests assumed Windows certificate APIs and an empty trust
+  store; the AGY test depended on a local executable.
+- Linux WSL targeted checks: `python3 -m unittest discover -s tests -p
+  test_lab_jobs.py`: 18 passed; `test_tls.py`: 10 passed, 2 Windows-store
+  skips; `test_agy_worker.py`: 32 passed.
+- Windows local `python -m pytest tests/ -q`: 350 passed in 128.56s.
 - GitHub Actions `Trained model` on 24dabcd: success, https://github.com/PrathamKapoor/Neural-Fabric/actions/runs/41884306514.
 - `python -m pytest tests/test_csv_workflow.py -q`: 2 passed in 32.82s (before baseline reporting was added).
 - `python -m pytest tests/ -q`: 350 passed in 81.79s on Python 3.13 after CSV changes and main integration.

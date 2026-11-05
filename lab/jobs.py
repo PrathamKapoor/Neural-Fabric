@@ -19,6 +19,7 @@ from __future__ import annotations
 import ctypes
 import json
 import os
+import signal
 import shutil
 import subprocess
 import sys
@@ -42,6 +43,17 @@ def cpu_count() -> int:
 
 def memory() -> dict:
     """Free/total RAM in MB (Windows API, stdlib ctypes)."""
+    if sys.platform.startswith("linux"):
+        try:
+            values = {}
+            with open("/proc/meminfo", encoding="ascii") as f:
+                for line in f:
+                    key, _, rest = line.partition(":")
+                    if key in ("MemTotal", "MemAvailable"):
+                        values[key] = int(rest.split()[0]) // 1024
+            return {"total_mb": values["MemTotal"], "free_mb": values["MemAvailable"]}
+        except (OSError, KeyError, ValueError, IndexError):
+            return {"total_mb": 0, "free_mb": 0}
     try:
         class _Stat(ctypes.Structure):
             _fields_ = [("dwLength", ctypes.c_ulong),
@@ -103,6 +115,19 @@ def _pid_alive(pid: int) -> bool | None:
     """
     if not pid:
         return False
+    if os.name == "posix":
+        proc = _LIVE.get(int(pid))
+        if proc is not None:
+            return proc.poll() is None
+        try:
+            os.kill(int(pid), 0)
+            return True
+        except ProcessLookupError:
+            return False
+        except PermissionError:
+            return None
+        except OSError:
+            return None
     try:
         kernel32 = ctypes.windll.kernel32
         handle = kernel32.OpenProcess(0x1000, False, int(pid))
@@ -147,6 +172,9 @@ def _pid_exit_code(pid: int) -> int | None:
     """Best-effort exit code (None while running or unreadable)."""
     if not pid:
         return None
+    if os.name == "posix":
+        proc = _LIVE.get(int(pid))
+        return proc.poll() if proc is not None else None
     try:
         kernel32 = ctypes.windll.kernel32
         handle = kernel32.OpenProcess(0x1000, False, int(pid))
@@ -163,6 +191,15 @@ def _pid_exit_code(pid: int) -> int | None:
 
 
 def _tree_kill(pid: int) -> bool:
+    if os.name == "posix":
+        try:
+            # Jobs are session leaders; never signal an unrelated group.
+            if int(pid) <= 1 or os.getpgid(int(pid)) != int(pid):
+                return False
+            os.killpg(int(pid), signal.SIGKILL)
+            return True
+        except (OSError, ValueError):
+            return False
     try:
         proc = subprocess.run(["taskkill", "/PID", str(int(pid)), "/T", "/F"],
                               capture_output=True, timeout=60)
@@ -332,7 +369,8 @@ class JobManager:
             proc = subprocess.Popen(
                 rec["command"], cwd=str(self.repo_root),
                 stdin=subprocess.DEVNULL, stdout=logf, stderr=subprocess.STDOUT,
-                creationflags=DETACHED | NEW_GROUP, close_fds=True)
+                creationflags=DETACHED | NEW_GROUP, close_fds=True,
+                start_new_session=(os.name == "posix"))
             rec["pid"] = proc.pid
             _track(proc)
         except (OSError, ValueError) as e:

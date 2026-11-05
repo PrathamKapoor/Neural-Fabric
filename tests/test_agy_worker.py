@@ -367,6 +367,7 @@ class TestLoopWithAgy(unittest.TestCase):
 
         agy_primary = self._agy_success(self, tmp.name,
                                         side_effect=_write)
+        self.enterContext(patch.object(AgyWorkerClient, "executable", return_value="agy"))
         mgr = RoleChain("manager", MockClient(
             [_mgr_msg("continue"), _mgr_msg("complete", "")], model="kimi"))
         wrk = RoleChain("worker", agy_primary)

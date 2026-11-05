@@ -1,6 +1,20 @@
 name: Trained model
 on: [push, pull_request]
 jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/ -q
   smoke:
     runs-on: ubuntu-latest
     steps:
@@ -8,8 +22,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python -m pip install torch pytest --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
-      - run: python -m pytest tests/ -q
+      - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_csv_workflow.py tests/test_end_to_end.py tests/test_trained_api.py -q
       - run: python -m neural_fabric train-demo --output artifacts/demo-model.pt --epochs 2
       - run: python -m neural_fabric predict --model artifacts/demo-model.pt --input examples/sample.json
       - run: python -m neural_fabric evaluate --model artifacts/demo-model.pt --mode top1

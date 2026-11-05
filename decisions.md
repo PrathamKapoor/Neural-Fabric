@@ -1,5 +1,26 @@
 # Neural Fabric — Decisions
 
+## Decision: Platform-specific process supervision with shared coverage
+
+**Status:** Accepted
+
+**Context:** Detached jobs used Windows process APIs even on Linux and returned UNKNOWN.
+
+**Decision:** Keep Windows supervision and use Linux memory probing, POSIX
+session-based process groups, liveness checks, and tracked child exit codes.
+Run the full suite on both hosted operating systems. Windows certificate-store
+tests remain Windows-only, while portable TLS behavior is tested on both.
+
+**Alternatives considered:** Skipping the entire detached-job suite on Linux.
+
+**Reason:** Linux job operation is useful and can be exercised with real child processes.
+
+**Consequences:** POSIX recovery cannot recover the exit code of an untracked
+child; OS process permissions can still make liveness unknown. Process-group
+termination depends on jobs starting as session leaders.
+
+**Verification:** Linux WSL targeted job, TLS and AGY suites; see flow.md.
+
 ## Decision: Numeric CSV with training-only preprocessing
 
 **Status:** Accepted

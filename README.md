@@ -138,6 +138,9 @@ with signed savings and modeled FLOPs. Add `"mode": "soft"` or
 The default is top-1. Run `python -m pytest tests/test_end_to_end.py
 tests/test_trained_api.py -q` for the new focused checks, or
 `python -m pytest tests/ -q` for the historical suite as well.
+The GitHub Actions workflow runs the full suite on Windows and Linux, plus
+an independent trained-model and CSV smoke job. Check the run for the commit
+you are using before assuming it passed.
 
 The synthetic test set has 150 examples. For a reproducible descriptive
 comparison, evaluate both modes of the same checkpoint and its separately

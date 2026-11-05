@@ -108,24 +108,25 @@ class TestPlatformGuards(unittest.TestCase):
     def test_missing_enum_api_returns_none(self):
         with mock.patch.object(tls_mod.os, "name", "nt"):
             with mock.patch.dict(tls_mod.ssl.__dict__):
-                del tls_mod.ssl.__dict__["enum_certificates"]
+                tls_mod.ssl.__dict__.pop("enum_certificates", None)
                 self.assertIsNone(tls_mod.windows_store_pem())
 
     def test_store_errors_degrade_to_none(self):
-        with mock.patch.object(tls_mod.ssl, "enum_certificates",
-                               side_effect=OSError("store locked")):
-            if os.name == "nt":
-                self.assertIsNone(tls_mod.windows_store_pem())
+        with mock.patch.object(tls_mod.os, "name", "nt"), \
+                mock.patch.object(tls_mod.ssl, "enum_certificates",
+                                  side_effect=OSError("store locked"), create=True):
+            self.assertIsNone(tls_mod.windows_store_pem())
 
     def test_non_windows_path_adds_nothing(self):
         # Faithful non-Windows simulation: stdlib keys its own store loading
         # off sys.platform while our guard keys off os.name; patch both.
         with mock.patch.object(os, "name", "posix"), \
                 mock.patch.object(sys, "platform", "linux"):
+            expected = ssl.create_default_context().get_ca_certs()
             ctx = tls_mod.create_ssl_context()
         self.assertEqual(ctx.verify_mode, ssl.CERT_REQUIRED)
         self.assertTrue(ctx.check_hostname)
-        self.assertEqual(ctx.get_ca_certs(), [])  # nothing added, none present
+        self.assertEqual(ctx.get_ca_certs(), expected)
 
     @unittest.skipUnless(ON_WINDOWS_STORE, "needs Windows certificate store")
     def test_windows_pem_is_well_formed_and_loadable(self):

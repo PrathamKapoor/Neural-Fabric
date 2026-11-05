@@ -16,6 +16,7 @@ import fnmatch
 import json
 import os
 import subprocess
+import sys
 import time
 from pathlib import Path
 
@@ -283,7 +284,8 @@ class ToolExecutor:
             return {"ok": False, "output": "command must be a non-empty argv list"}
         exe = Path(cmd[0])
         if exe.is_absolute():
-            if exe.name.lower() not in ("python.exe", "pythonw.exe", "python"):
+            if (exe.name.lower() not in ("python.exe", "pythonw.exe", "python")
+                    and exe.resolve() != Path(sys.executable).resolve()):
                 return {"ok": False, "output": "absolute executables limited to python"}
         else:
             # repo-relative executable/script: must stay jailed
