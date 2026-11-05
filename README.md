@@ -10,6 +10,8 @@ A research system that tests whether **input-conditioned composition of heteroge
 
 **Interpretation:** The historical NF-02 and NF-12 accuracy figures measure how accurately the router selects the synthetic input's assigned mode. They do not measure predictions produced by the selected primitives. The serving demo uses untrained weights, so its outputs are not evidence of trained end-to-end classification accuracy. FLOP figures are analytical estimates, not measured latency.
 
+**Looking for the trainable classifier?** The [usable-system feature branch](https://github.com/PrathamKapoor/Neural-Fabric/tree/feature/usable-neural-fabric) contains the trained model, numeric CSV workflow, local API, screenshots, and cross-platform checks. It has not yet been merged into `main`.
+
 ---
 
 ## Why Neural Fabric?
