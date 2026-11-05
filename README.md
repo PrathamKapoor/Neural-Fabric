@@ -139,6 +139,8 @@ A research system that tests whether **input-conditioned composition of heteroge
 The earlier experiments report a router-selection accuracy and modeled compute
 tradeoff; they do not establish an end-to-end expert accuracy tradeoff.
 
+**Interpretation:** The historical NF-02 and NF-12 accuracy figures measure how accurately the router selects the synthetic input's assigned mode. They do not measure predictions produced by the selected primitives. The serving demo uses untrained weights, so its outputs are not evidence of trained end-to-end classification accuracy. FLOP figures are analytical estimates, not measured latency.
+
 ---
 
 ## Why Neural Fabric?
