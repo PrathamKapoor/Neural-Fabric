@@ -6,6 +6,11 @@ Provide reproducible CPU training and inference with actual routed expert predic
 ## Current State
 Baseline from clean main at c431584: 343 tests passed. A separate trainable synthetic classifier, checkpoint, CLI, local API and UI are implemented. Legacy artifacts and serving are preserved.
 
+2026-11-05: merged latest main into the feature branch after resolving the README
+conflict; historical routing interpretation from both sides is preserved.
+The numeric CSV CLI now saves train-only standardization and split indices,
+with separate fixed baselines and an exploratory UCI Iris evaluation.
+
 ## Work Plan
 - [x] Inspect repository and establish baseline.
 - [x] Implement real end-to-end routing.
@@ -19,6 +24,13 @@ Baseline from clean main at c431584: 343 tests passed. A separate trainable synt
 - [ ] Commit and push.
 
 ## Verification
+- GitHub Actions `Trained model` on 24dabcd: success, https://github.com/PrathamKapoor/Neural-Fabric/actions/runs/41884306514.
+- `python -m pytest tests/test_csv_workflow.py -q`: 2 passed in 32.82s (before baseline reporting was added).
+- `python -m pytest tests/ -q`: 350 passed in 81.79s on Python 3.13 after CSV changes and main integration.
+- `python -m neural_fabric predict-csv --csv artifacts/iris-new.csv --model artifacts/iris-1.pt`: returned three predictions from a CSV without the target column.
+- A fresh isolated dependency installation was not performed. The existing trained-demo browser was exercised for screenshots in the earlier update; the CSV workflow is CLI-only.
+- `python -m neural_fabric train-csv --csv artifacts/iris.csv --target species --output artifacts/iris-1.pt --seed 1 --epochs 40` and corresponding `evaluate-csv` and `predict-csv`: completed; 150 predictions. Seeds 2 and 3 were run through the Python API. See docs/CSV_EXPERIMENT.md.
+- `docker info --format '{{.ServerVersion}}'`: Docker daemon unavailable, so trained image build and execution remain unverified.
 - `python -m pytest tests/ -q`: baseline 343 passed in 73.70s, Python 3.13.14.
 - `python -c "import torch; print(torch.__version__)"`: 2.13.0+cpu.
 - `python -m pytest tests/test_end_to_end.py tests/test_trained_api.py -q`: 5 passed in 7.41s.

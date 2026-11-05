@@ -1,5 +1,21 @@
 # Neural Fabric — Decisions
 
+## Decision: Numeric CSV with training-only preprocessing
+
+**Status:** Accepted
+
+**Context:** Users need predictions on their own tabular data without leaking held-out statistics.
+
+**Decision:** Split rows by class first, then fit per-column means and scales on training rows. Save feature names, labels, split indices, preprocessing and source SHA-256 in a versioned checkpoint.
+
+**Alternatives considered:** Fitting preprocessing on the full file; automatically encoding categorical input features.
+
+**Reason:** The former leaks test information; the latter adds ambiguity and complexity.
+
+**Consequences:** CSV features must be finite numeric values and each class must have at least five rows. Evaluation requires the exact original file.
+
+**Verification:** `tests/test_csv_workflow.py` and the UCI Iris example in `docs/CSV_EXPERIMENT.md`.
+
 ## Decision: Preserve historical experiments
 
 **Status:** Accepted

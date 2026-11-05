@@ -11,6 +11,7 @@
 !CHANGELOG.md
 !LICENSE
 !Dockerfile
+!Dockerfile.trained
 !.dockerignore
 !docker-compose.yml
 !package.json

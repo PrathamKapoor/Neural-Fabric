@@ -85,6 +85,26 @@ expert index. Top-1 and top-k execute only selected experts for each sample.
 
 ## Get started
 
+### Classify your numeric CSV
+
+CSV files must have unique headers, numeric finite features, no missing values,
+and at least two target classes with five rows each. Categorical features are
+not supported. The dataset is split by class before standardization is fitted
+on the training partition. The checkpoint stores feature order, target labels,
+preprocessing and split indices.
+
+```bash
+python -m neural_fabric train-csv --csv data.csv --target target_column --output artifacts/csv-model.pt
+python -m neural_fabric evaluate-csv --csv data.csv --model artifacts/csv-model.pt --mode top1
+python -m neural_fabric predict-csv --csv new_rows.csv --model artifacts/csv-model.pt --mode top1
+```
+
+Evaluation requires the original file with the same bytes and ordering, checked
+by SHA-256, to preserve the held-out split. Prediction needs the original feature
+headers but no target column. Evaluation reports fixed linear, small-MLP and
+wide-MLP baselines, task loss, estimated FLOPs and batch-one CPU latency. See
+[CSV experiment and dataset provenance](docs/CSV_EXPERIMENT.md).
+
 Python 3.11+ is intended; this workflow was locally checked with Python 3.13
 and CPU PyTorch 2.13. Clone the feature branch and install CPU PyTorch and
 pytest in a virtual environment:

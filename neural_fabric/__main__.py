@@ -12,6 +12,17 @@ def main():
     t.add_argument("--output", required=True)
     t.add_argument("--seed", type=int, default=42)
     t.add_argument("--epochs", type=int, default=20)
+    ct = commands.add_parser("train-csv")
+    ct.add_argument("--csv", required=True)
+    ct.add_argument("--target", required=True)
+    ct.add_argument("--output", required=True)
+    ct.add_argument("--seed", type=int, default=42)
+    ct.add_argument("--epochs", type=int, default=20)
+    for name in ("evaluate-csv", "predict-csv"):
+        cp = commands.add_parser(name)
+        cp.add_argument("--model", required=True)
+        cp.add_argument("--csv", required=True)
+        cp.add_argument("--mode", choices=("soft", "top1"), default="top1")
     for name in ("predict", "evaluate"):
         p = commands.add_parser(name)
         p.add_argument("--model", required=True)
@@ -25,6 +36,14 @@ def main():
     try:
         if args.command == "train-demo":
             result = train(args.output, args.seed, args.epochs)
+        elif args.command in ("train-csv", "evaluate-csv", "predict-csv"):
+            from .csv_workflow import train_csv, evaluate_csv, predict_csv
+            if args.command == "train-csv":
+                result = train_csv(args.csv, args.target, args.output, args.seed, args.epochs)
+            elif args.command == "evaluate-csv":
+                result = evaluate_csv(args.model, args.csv, args.mode)
+            else:
+                result = predict_csv(args.model, args.csv, args.mode)
         else:
             model, checkpoint = load(args.model)
             if args.command == "predict":
